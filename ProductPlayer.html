@@ -93,7 +93,7 @@ const data = {
 
 function director( ) {
 	function textToPage(text) {
-		console.log(CSVToJSON(text))
+		alert(CSVToJSON(text))
 	}
 	
 	
@@ -141,7 +141,7 @@ function loadById(obj, loadController){
 		attribute = obj[key].attribute;
 		
 		if(!element) throw new Error(`loadById: got wrong id: ${key}`);
-		if(!attribute) throw new Error(`loadById: there aren't attribute in given obgect. Key: ${key}`);
+		if(!attribute) throw new Error(`loadById: there aren't attribute in given object. Key: ${key}`);
 		if( element.hasAttribute(attribute) ) throw new Error(`loadById: the element ${element} id: "${key}" already has the attribute "${attribute}"`)
 		
 		element.setAttribute(attribute, obj[key].value);
