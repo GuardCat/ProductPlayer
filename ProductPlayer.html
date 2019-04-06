@@ -1,0 +1,159 @@
+<!doctype HTML>
+<html>
+<head>
+	<link rel="stylesheet" id="mainstyle"></link>
+	<meta charset="utf-8">
+</head>
+
+<body>
+
+<header>
+	<h1 alt = "это ренессанс">Каталог продуктов</h1>
+</header>
+
+<nav>Поле фильтров</nav>
+
+<div class="main">
+	<article>
+		<div class="cardHeader SA">
+			<span class="productClass" name="productClass">SA</span>
+			<span class="productTypeContainer">
+				<img class="type" name="consultation" src="img/icons/types/consultation.png" title = "Консультации">
+				<img class="type" name="insurance" src="img/icons/types/insurance.png" title = "Страхование"> 
+				<img class="type" name="work" src="img/icons/types/work.png" title = "Проведение работ, услуги">
+			</span>
+		</div>
+		
+		<img class="photo" name="photo" src="img/noPhoto.png">
+		
+		<div class="name">
+			Детство под защитой
+		</div>
+		
+		<div class="demandContainer">
+			<img class="demand" name="animal" src="img/icons/demand/animal.png">
+			<img class="demand" name="car" src="img/icons/demand/car.png">
+			<img class="demand" name="health" src="img/icons/demand/health.png">
+			<img class="demand" name="compass" src="img/icons/demand/compass.png">
+			<img class="demand" name="house" src="img/icons/demand/house.png">
+			<img class="demand" name="justice" src="img/icons/demand/justice.png">
+		</div>
+		
+		<div class="partnersContainer">
+			<span class="partner off">D2</span>
+			<span class="partner off">Консилиум</span>
+			<span class="partner">Альфа</span>
+			<span class="partner">ВСК</span>
+			<span class="partner off">РГС</span>
+			<span class="partner">ГРС</span>
+			<span class="partner off">Зетта</span>
+			<span class="partner">ЕЮС</span>
+		</div>
+	</article>
+	
+
+</div>
+
+<script type="text/javascript" id="es6shim"></script>
+<script type="text/javascript" id="es6sham"></script>
+<script type="text/javascript" id="fetch"></script>
+
+<script type="text/javascript" id="observer"></script>
+<script type="text/javascript" id="utilities"></script>
+<script type="text/javascript" id="fetcher"></script>
+
+<script type="text/javascript">
+
+const data = {
+	forLoad: {
+		observer:	{attribute:	"src",	value:	"js/observer.js",				loadControl: true},
+		fetcher:	{attribute: "src",	value:	"js/fetcher.js",				loadControl: true},
+		utilities:	{attribute:	"src",	value:	"js/utilities.js",				loadControl: true},
+		es6shim:	{attribute:	"src",	value:	"../!Extends/es6-shim.min.js",	loadControl: true},
+		es6sham:	{attribute:	"src",	value:	"../!Extends/es6-sham.min.js",	loadControl: true},
+		fetch:		{attribute:	"src",	value:	"../!Extends/fetch.js",			loadControl: true},
+		mainstyle:	{attribute:	"href",	value:	"css/mainstyle.css",			loadControl: true}
+	},
+	
+	type: {
+		consultation: [
+			"img/icons/types/consultationOff.png",
+			"img/icons/types/consultation.png"
+		],
+		insurance: [
+			"img/icons/types/insuranceOff.png",
+			"img/icons/types/insurance.png"
+		],
+		work: [
+			"img/icons/types/workOff.png",
+			"img/icons/types/work.png"
+		]
+	}
+};
+
+function director( ) {
+	function textToPage(text) {
+		console.log(CSVToJSON(text))
+	}
+	
+	
+	getTextFromUrl("test.csv", textToPage);
+}
+
+
+/*	@constructor
+*	@description экземпляр данного объекта вызовет handler после того как метод add запущен numberOfElements раз. 
+*	@param numberOfElements {number} сколько раз должен быть вызван метод add
+*	@param handler {function} функция, которая будет вызвана по достижению нужного числа вызовов
+*	@throws не передан handler или numberOfElements отсутствует или <= 0
+*	@throws Метод add вызывается больше раз, чем указано в numberOfElements
+*/
+class LoadController {
+	constructor(numberOfElements, handler) {
+		if(!numberOfElements || numberOfElements <= 0 || !handler || !(handler instanceof Function)) throw new Error("LoadController: wrong arguments.");
+		this.numberOfElements = numberOfElements;
+		this.count = 0;
+		this.handler = handler;
+	}
+
+	add( ) {
+		if(++this.count === this.numberOfElements) this.handler( );
+		if(this.count > this.numberOfElements) throw new Error("Instance of LoadControler: too many calls.");
+	}
+}
+
+
+/*	@description Присваивает атрибутам HTML элементов с соответствующими id нужные значения   
+*	@param obj{Object} объект, ключи — id нужных элементов, в объекте по ключу: attribute — атрибут, value — значение. 
+*			если есть loadControl: true, HTML элементу навешивается событие loadController.add по load
+*	@throws не передан объект или передан не объект
+*	@throws не найден элемент с указанным id
+*	@throws элемент уже имеет запрошенный атрибут (независимо от его заполненности)
+*	@throws отсутствует attribute по ключу
+*	@require class LoadController
+*/
+function loadById(obj, loadController){
+	let element, attribute;
+	if(!obj || !(obj instanceof Object)) throw new Error("loadById: got wrong object.");
+	
+	for (let key in obj) {
+		element = document.getElementById(key);
+		attribute = obj[key].attribute;
+		
+		if(!element) throw new Error(`loadById: got wrong id: ${key}`);
+		if(!attribute) throw new Error(`loadById: there aren't attribute in given obgect. Key: ${key}`);
+		if( element.hasAttribute(attribute) ) throw new Error(`loadById: the element ${element} id: "${key}" already has the attribute "${attribute}"`)
+		
+		element.setAttribute(attribute, obj[key].value);
+		if(obj[key].loadControl) element.addEventListener("load", loadController.add.bind(loadController), false); /* bind т.к. вызов по событию от элемента ломает this*/
+	}
+}
+
+loadById( data.forLoad, new LoadController(Object,keys(data.forLoad).length, director) );
+
+
+
+</script>
+
+</body>
+</html>
