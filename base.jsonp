@@ -1,3 +1,11 @@
 base = new GCBase({
-/*json here*/
+	__data: {
+		name: "Products base",
+		version: 1,
+		description: "Information about financial products in GCBase format."
+	},
+	
+	__tables: {
+	
+	}
 })
