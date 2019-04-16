@@ -286,12 +286,20 @@ function makeTable(table, tableName) {
 			if (row === 0) return false;
 			let elements = (table[row][col] && table[row][col].split) ? table[row][col].split(";") : [table[row][col]];
 			if ( !result.__rows[row - 1]) result.__rows[row - 1] = { }; /* -1 так как удалена первая строка (заголовки) */
-			result.__rows[row - 1][name] = (result.__captions[name].multiply) ? elements : table[row][col];		
+			result.__rows[row - 1][name] = (result.__captions[name].multiply) ? elements : table[row][col];
 		} );
 		
 	} );
 	
-	if ( !("id" in result.__captions) ) result.__captions.id = {type: "auto"};
+	if ( !("id" in result.__captions) ) result.__captions.id = {type: "auto", unique: "true", format: "integer", next: 0};
+	
+	result.__rows.forEach( (el, row) => {
+		if ( !("id" in el) ) {
+			el.id = result.__captions.id.next;
+			result.__captions.id.next++;
+		} 
+	} );
+	
 	return result;
 }
 
@@ -308,7 +316,6 @@ function toGCBase(json) {
 
 	console.log(json);
 	for(tableKey in json) {
-		table = {};
 		table = makeTable(json[tableKey], tableKey);
 		result.__tables[tableKey] = { __captions: { }, __rows: [ ] }
 		
@@ -321,7 +328,7 @@ function toGCBase(json) {
 	window.base = new GCBase(result);
 	base.recache();
 	
-	saveFile( `var base = "${encodeURIComponent( base.stringifyCache() )}"`, {name:"base.json", type: "text/json", charset: "utf=8"} );
+	saveFile( `var base = "${encodeURIComponent( base.stringifyCache() )}"`, {name:"base.jsonp", type: "text/json", charset: "utf=8"} );
 	
 }
 
