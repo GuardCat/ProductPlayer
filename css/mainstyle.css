@@ -26,10 +26,10 @@ h1 {
 article {
     display: block;
     border-radius: 10px;
-    margin: 5px;
+    margin: 10px;
     background-color: white;
-    width: 250px;
-    height: 375px;
+    width: 300px;
+    height: 448px;
     padding: 0px;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); 
 }

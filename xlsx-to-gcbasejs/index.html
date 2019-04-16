@@ -22,26 +22,27 @@ a { text-decoration: none }
 </style>
 </head>
 <body>
+<h2>XLSX to Guard cat base converter (implemented jsonp: base = { } )</h2>
 <pre>
-<b><a href="http://sheetjs.com">SheetJS Data Preview Live Demo</a></b>
-(Base64 text works back to IE6; drag and drop works back to IE10)
 
-<a href="https://github.com/SheetJS/js-xlsx">Source Code Repo</a>
-<a href="https://github.com/SheetJS/js-xlsx/issues">Issues?  Something look weird?  Click here and report an issue</a>
+
+
+<a href="https://github.com/SheetJS/js-xlsx">Source Code js-xlsx library see here</a>
 Output Format: <select name="format" onchange="setfmt()">
 <option value="csv"> CSV</option>
-<option value="json" selected> JSON</option>
+<option value="json" selected> JSONp</option>
 <option value="form"> FORMULAE</option>
 <option value="html"> HTML</option>
 </select><br />
 <div id="drop">Drop a spreadsheet file here to see sheet data</div>
 <input type="file" name="xlfile" id="xlf" /> ... or click here to select a file
 
+<div style = "display: none">
 <textarea id="b64data">... or paste a base64-encoding here</textarea>
 <input type="button" id="dotext" value="Click here to process the base64 text" onclick="b64it();"/><br />
 <b>Advanced Demo Options:</b>
 Use Web Workers: (when available) <input type="checkbox" name="useworker">
-Use readAsBinaryString: (when available) <input type="checkbox" name="userabs" checked>
+Use readAsBinaryString: (when available) <input type="checkbox" name="userabs" checked></div>
 </pre>
 <pre id="out"></pre>
 <div id="htmlout"></div>
@@ -51,6 +52,7 @@ Use readAsBinaryString: (when available) <input type="checkbox" name="userabs" c
 <script src="js/shim.js"></script>
 <script src="js/jszip.js"></script>
 <script src="js/xlsx.js"></script>
+<script src="js/GCBase.js"></script>
 <script>
 /*jshint browser:true */
 /* eslint-env browser */
@@ -135,7 +137,9 @@ var process_wb = (function() {
 		/*if(OUT.innerText === undefined) OUT.textContent = output;
 		else OUT.innerText = output;
 		if(typeof console !== 'undefined') console.log("output", new Date());*/
-		window.SHARE = output;
+		/*modified*/
+		//window.SHARE = output;
+		toGCBase(output);
 	};
 })();
 
@@ -223,7 +227,113 @@ var do_file = (function() {
 		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
 		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	})();
+	})( );
+
+
+function makeTable(table, tableName) {
+	let result = { __captions: {}, __rows: [ ] };
+	result.__captions = { };
+	
+	table[0].forEach( (el, col) => {
+		let  links, types, name;
+		links = el.split(":");
+		types = el.split("#");
+		
+		if (links.length > 1 && types.length > 1) throw new Error("Ошибка в заголовках. Не может быть указано одновременно «:» и «#».")
+		
+		if(el.slice(-1) === ";") {
+			name = links[0];
+			result.__captions[name] = { };
+			
+			result.__captions[name].multiply = true
+			result.__captions[name].type = "link"
+			result.__captions[name].table = name
+			result.__captions[name].to = links[1].slice(0, -1); /* Убираем финальную точку с запятой */
+			result.__captions[name].data = ":all";
+		} else {
+		
+			if (links.length > 1) {
+				name = links[0];
+				result.__captions[name] = { };
+				
+				result.__captions[name].type = "link";
+				result.__captions[name].table = name;
+				result.__captions[name].to = links[1];
+				result.__captions[name].multiply = false;
+				result.__captions[name].data = ":all";
+			} else {
+				
+				if (types.length > 1) {
+					name = types[0];
+					result.__captions[name] = { };
+					
+					result.__captions[name].type = types[1];
+					if (result.__captions[name].type === "number")	result.__captions[name].format = types[2] || "float";
+					if (result.__captions[name].type === "date")	{ result.__captions[name].format = {day: "numeric", month: "long", year: "numeric", hour: "numeric", minute: "numeric", hour12: false}; result.__captions[name].language = "ru" };
+				} else {
+					name = el;
+					result.__captions[name] = { };
+					
+					result.__captions[name].type = "text";
+					result.__captions[name].unique = false;
+				}
+				
+			}
+		
+		}
+		
+		table.forEach( (el, row) => {
+			if (row === 0) return false;
+			let elements = (table[row][col] && table[row][col].split) ? table[row][col].split(";") : [table[row][col]];
+			if ( !result.__rows[row - 1]) result.__rows[row - 1] = { }; /* -1 так как удалена первая строка (заголовки) */
+			result.__rows[row - 1][name] = (result.__captions[name].multiply) ? elements : table[row][col];		
+		} );
+		
+	} );
+	
+	if ( !("id" in result.__captions) ) result.__captions.id = {type: "auto"};
+	return result;
+}
+
+function toGCBase(json) {
+	let 
+		result = {
+			__tables: { 
+				
+			} 
+		},
+		desc = ({name: "ProductsBase", version: 1, description: "Автоматически сгенерированная из Excel-таблицы База продуктов для ProductPlayer."}),
+		tableKey, rowKey, table, row, cell
+	;
+
+	console.log(json);
+	for(tableKey in json) {
+		table = {};
+		table = makeTable(json[tableKey], tableKey);
+		result.__tables[tableKey] = { __captions: { }, __rows: [ ] }
+		
+		Object.assign( result.__tables[tableKey].__captions, table.__captions );
+		Object.assign( result.__tables[tableKey].__rows, table.__rows );
+	}
+	
+	result.__data = desc;
+	
+	window.base = new GCBase(result);
+	base.recache();
+	
+	saveFile( `var base = "${encodeURIComponent( base.stringifyCache() )}"`, {name:"base.json", type: "text/json", charset: "utf=8"} );
+	
+}
+
+function saveFile(content, settings={name:"untitled.json", type: "text/json", charset: "utf=8"}) {
+		let link = document.createElement("a");
+		link.style.display="none";
+		link.setAttribute("download", settings.name)
+		link.setAttribute("href", `data:${settings.type};charset=${settings.charset},${encodeURI(content)}`);
+		document.body.appendChild(link);
+		link.click();
+}
+
 </script>
 </body>
 </html>
