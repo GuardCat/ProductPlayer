@@ -23,7 +23,7 @@
 <script type="text/javascript" id="utilities"></script>
 <script type="text/javascript" id="fetcher"></script>
 <script type="text/javascript" id="base"></script>
-<script type="text/javascript" src = "js/cardMaker.js?v1" id="cardMaker"></script>
+<script type="text/javascript" id="cardMaker"></script>
 
 <script type="text/javascript">
 
@@ -33,7 +33,8 @@ const data = {
 		fetcher:	{attribute: "src",	value:	"js/fetcher.js",		loadControl: true},
 		utilities:	{attribute:	"src",	value:	"js/utilities.js",		loadControl: true},
 		base:		{attribute:	"src",	value:	"base.jsonp",			loadControl: true},
-		mainstyle:	{attribute:	"href",	value:	"css/mainstyle.css",	loadControl: true}
+		mainstyle:	{attribute:	"href",	value:	"css/mainstyle.css",	loadControl: true},
+		cardMaker:	{attribute: "src",	value: `js/cardMaker.js?${Math.random( )}`}
 	},
 	
 	__length: 0,
