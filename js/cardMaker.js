@@ -1,7 +1,6 @@
-class cardMaker {
+class CardMaker {
 	constructor(table, container) {
 		let result = [];
-		
 		table.forEach( el => {
 			let card = document.createElement("article"), row, h, text;
 			for(let col in el) {
@@ -13,8 +12,8 @@ class cardMaker {
 				
 				row.appendChild(h);
 				row.appendChild(text);
+				card.appendChild(row);
 			}
-			card.appendChild(row);
 			container.appendChild(card);
 			result.push(card);
 		} );
