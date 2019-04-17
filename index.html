@@ -3,6 +3,7 @@
 <head>
 	<link rel="stylesheet" id="mainstyle"></link>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
  
 <body>
@@ -41,7 +42,7 @@ const data = {
 function director( ) {
 	base = JSON.parse( decodeURIComponent(base) ); /* определение переменной зашито в jsonp */
 	let cards = new CardMaker(base.desc, document.querySelector(".main") );
-	console.log(base.desc[5].pictureurl)
+	//console.log(base.desc[5].pictureurl)
 }
 /*	* Класс LoadList контролирует загрузку элементов script, style и запускает
 	* handler, когда все загружено успешно. 
