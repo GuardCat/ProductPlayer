@@ -2,7 +2,7 @@
 /*jshint browser: true */
 class CardMaker {
 	constructor(table, container) {
-		let result = [], fragment = document.createDocumentFragment;
+		let result = [], fragment = document.createDocumentFragment();
 		table.forEach( el => {
 			let card = document.createElement("article"), row, h, text;
 			for(let col in el) {
@@ -27,4 +27,3 @@ class CardMaker {
 		container.appendChild(fragment);
 	}
 }
-    
