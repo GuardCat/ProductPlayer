@@ -19,17 +19,17 @@
 			<span id="type">SA</span>
 			<span class="productTypeContainer">
 				<img class="category" id="Консультация" src="https://webtutor.otpbank.ru/download_file.html?file_id=6668193941144342270">
-				<img class="category" id="Страхование"	src="https://webtutor.otpbank.ru/download_file.html?file_id=6668194250211670349"> 
+				<img class="category" id="Страхование"	src="https://webtutor.otpbank.ru/download_file.html?file_id=6668194250211670349">
 				<img class="category" id="Услуга"		src="https://webtutor.otpbank.ru/download_file.html?file_id=6668493326253244373">
 			</span>
 		</div>
-		
+
 		<img class="photo" src="img/noPhoto.png">
-		
+
 		<div class="name">
 			Шуба под защитой
 		</div>
-		
+
 		<div class="demandContainer">
 			<img class="demand" name="animal" src="img/icons/demand/animal.png">
 			<img class="demand" name="car" src="img/icons/demand/car.png">
@@ -39,10 +39,10 @@
 			<img class="demand" name="justice" src="img/icons/demand/justice.png">
 		</div>
 	</article>
-	
+
 
 </div>
-	
+
 
 <script type="text/javascript" id="observer"></script>
 <script type="text/javascript" id="utilities"></script>
@@ -66,17 +66,17 @@ const data = {
 function director( ) {
 	base = JSON.parse( decodeURIComponent(base) ); /* определение переменной зашито в jsonp */
 	let cards = new CardMaker(base.desc, document.querySelector(".main") );
-	console.log(base.desc[5].pictureurl)
+	//console.log(base.desc[5].pictureurl)
 }
 /*	* Класс LoadList контролирует загрузку элементов script, style и запускает
-	* handler, когда все загружено успешно. 
+	* handler, когда все загружено успешно.
 	*
-	* @constructor 
+	* @constructor
 	*
-	* @param list {Object} объект объектов. Структура: 
+	* @param list {Object} объект объектов. Структура:
 	*	myscript (id тега для загрузки): {attribute: "src, href и т.д.",	value:	"содержимое тега"}
 	*
-	* @param handler {Function} будет вызван, когда все объекты загрузятся. При 
+	* @param handler {Function} будет вызван, когда все объекты загрузятся. При
 	* 	отсутствии игнорируется, конструктор просто присвоит значения атрибутов тегам.
 	*/
 class LoadList {
@@ -85,15 +85,15 @@ class LoadList {
 		this.length = Object.keys(list).length;
 		this.loaded = 0;
 		this.handler = handler;
-		
-		if (this.handler instanceof Function) { /* если нет корректного handler, не устанавливаем события */ 
+
+		if (this.handler instanceof Function) { /* если нет корректного handler, не устанавливаем события */
 			for(let i in list) {
 				if (!list.hasOwnProperty(i)) continue;
 				element = document.getElementById(i);
 				attribute = list[i].attribute;
-				if(!element) throw new Error(`loadList: got wrong id: ${i}`);		
-				
-				element.addEventListener("load", this.check.bind(this), false); /* bind т.к. вызов по событию от элемента ломает this*/	
+				if(!element) throw new Error(`loadList: got wrong id: ${i}`);
+
+				element.addEventListener("load", this.check.bind(this), false); /* bind т.к. вызов по событию от элемента ломает this*/
 			}
 		}
 
@@ -103,13 +103,13 @@ class LoadList {
 			if(!element) throw new Error(`loadList: got wrong id: ${i}`);
 			if(!attribute) throw new Error(`loadList: there aren't attribute in given object. Key: ${i}`);
 			if( element.hasAttribute(attribute) ) throw new Error(`loadList: the element ${element} id: "${i}" already has the attribute "${attribute}"`);
-			
+
 			element = document.getElementById(i);
 			element.setAttribute(list[i].attribute, list[i].value);
 		}
 
 	}
-	
+
 	check( ) {
 		this.loaded++;
 		if (this.loaded === this.length && (this.handler instanceof Function) ) this.handler( );
