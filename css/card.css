@@ -42,13 +42,9 @@ article {
 	margin-left:				4px;
 	overflow:					hidden;
 	padding: 					0px;
+	line-height:				0px;
 }
 
-#categories > div > * {
-  margin: 0px;
-  padding: 0px;
-  border: 0px;
-}
 .mask {
 	z-index:					10;
 }
@@ -70,24 +66,13 @@ div.enabled > img.mask {
 }
 
 .icon {
-	width:	100%;
-	position: relative;
-	left: 0px;
-	top:	-100%;
+	width:						100%;
+	position:					relative;
+	left:						0px;
+	top:						-100%;
 	z-index:					1;
 }
 
-
-
-#consultation {
-
-}
-#insurance {
-	background-image:			url(../img/icons/category/insurance.png);
-}
-#service{
-	background-image:			url(../img/icons/category/service.png);
-}
 
 #name {
 	position:					relative;
