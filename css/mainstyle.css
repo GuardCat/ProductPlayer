@@ -17,9 +17,9 @@ h1 {
 }
 
 .cardContainer {
-    background-color:			#F1F1F1;
-    display:					flex;
-    align-items:				stretch;
-    flex-wrap:					wrap;
-    justify-content:			flex-start;
+    background-color:	#F1F1F1;
+    display:			flex;
+    align-items:		stretch;
+    flex-wrap:			wrap;
+    justify-content:	flex-start;
 }
