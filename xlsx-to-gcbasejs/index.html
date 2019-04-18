@@ -328,7 +328,7 @@ function toGCBase(json) {
 	window.base = new GCBase(result);
 	base.recache();
 	
-	saveFile( `var base = "${encodeURIComponent( base.stringifyCache() )}"`, {name:"base.jsonp", type: "text/json", charset: "utf=8"} );
+	saveFile( `var base = "${encodeURIComponent( base.stringifyCache( ) )}"`, {name:"base.jsonp", type: "text/json", charset: "utf=8"} );
 	
 }
 
