@@ -4,6 +4,7 @@
     align-items:				stretch;
     flex-wrap:					wrap;
     justify-content:			flex-start;
+<<<<<<< HEAD
 }
 
 div.disabled > img {
@@ -60,7 +61,48 @@ article {
 	overflow:					hidden;
 }
 
+#consultation {
+	background-image:			url(../img/icons/category/consultation.png);
+}
+#insurance {
+	background-image:			url(../img/icons/category/insurance.png);
+}
+#service{
+	background-image:			url(../img/icons/category/service.png);
+}
 
+.SA {
+    background-color:			#FFC000;
+}
+
+#type {
+	font-size:					22px;
+}
+
+
+#categories {
+	display:					table-cell;
+}
+#categories > div {
+	width:						25px;
+	height:						25px;
+	background-size:			cover;
+	display:					inline-block;
+	
+	overflow:					hidden;
+	margin-top:					2px;
+}
+
+div.disabled > img {
+	width:						100%;
+	height:						100%;
+}
+
+div.enabled > img {
+	width:						100%;
+	height:						100%;
+	margin-left:				100px;
+}
 
 #consultation {
 	background-image:			url(../img/icons/category/consultation.png);
