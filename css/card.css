@@ -96,6 +96,53 @@ div.enabled > .mask {
  **********************************/
 .segments {
 	position:					relative;
-	top:						30px;
+	top:						31px;
 	left:						5px;
 }
+
+/**********************************
+ Заглавная картинка
+ **********************************/
+ .cover {
+	position:					relative;
+	width:						100px;
+	top:						-47px;
+	right:						calc(-100% + 100px);
+ }
+ 
+ /**********************************
+ Список РЦ с картой на фоне
+ **********************************/
+ .map {
+	display:					grid;
+	grid-template-columns:		1fr 1fr 1fr;
+	
+	font-size:					14px;
+	text-align:					center;
+	
+	position:					relative;
+	left:						10px;
+	top:						-150px;
+	width:						170px;
+	height:						60px;
+
+	background-image:			url(../img/map.png);
+	background-size:			contain;
+	background-repeat:			no-repeat;
+ }
+ 
+  /**********************************
+ Заголовок переключателя описаний
+ **********************************/
+ .descClicker {
+	position:					relative;
+	top:						-100px;
+ }
+ 
+   /**********************************
+ Заголовок переключателя СК
+ **********************************/
+ .companyClicker {
+	position:					relative;
+	top:						40px;
+ }
