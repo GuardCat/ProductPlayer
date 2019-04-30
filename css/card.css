@@ -27,7 +27,7 @@ article {
 .SA {
     background-color:			#FFC000;
 }
-#type {
+.type {
 	font-size:					22px;
 }
 
@@ -76,10 +76,14 @@ div.enabled > .mask {
 	position:					relative;
 	left:						-100px;
 }
+/**********************************
+ Конец блока «Иконки и маски для них»
+ **********************************/
 
-
-
-#name {
+/**********************************
+ Название продукта
+ **********************************/
+.name {
 	position:					relative;
 	left:						10px;
 	top:						23px;
@@ -87,7 +91,11 @@ div.enabled > .mask {
 	font-weight:				bold;
 }
 
-#segments {
+/**********************************
+ Блок с картинками сегментов
+ **********************************/
+.segments {
 	position:					relative;
-	top:						60px;
+	top:						30px;
+	left:						5px;
 }
