@@ -90,7 +90,7 @@ div.enabled > .mask {
 	position:					relative;
 	left:						10px;
 	top:						23px;
-	font-size:					26px;
+	font-size:					30px;
 	font-weight:				bold;
 }
 
@@ -109,7 +109,7 @@ div.enabled > .mask {
  .cover {
 	position:					relative;
 	width:						100px;
-	top:						-47px;
+	top:						-57px;
 	right:						calc(-100% + 100px);
  }
  
@@ -140,10 +140,27 @@ div.enabled > .mask {
 
 article > section {
 	position:					relative;
-	word-spacing: 				-2.5px;
+
 }
 
-section > label {
+section > .tabCaption {
+	display:					flex;
+	justify-content:			space-around;
+	width:						100%;
+	flex-wrap: 					wrap;
+}
+
+section > .tabCaption > * {
+	flex-grow:					1;	
+}
+
+.breaker {
+	height:						0;
+	width:						100%;
+	break-after:				always;
+}
+
+.tabCaption > label {
 	text-align:					center;
 	font-weight:				bold;
 	font-size:					14px;
@@ -152,33 +169,39 @@ section > label {
 	position:					relative;
 }
 
+article .description {
+	display: 					none;
+	position:					relative;
+	top:						5px;
+	font-size: 					15px;
+	padding-left:				10px;
+	padding-right:				10px;
+}
+
 section > hr {
 	border:						0px;
 	background-color: 			#eee;
 	height:						2px;
 	position:					relative;
-	top:						29px;
-	position:					relative;
+	top:						27px;
 }
-section > input[type='radio'] {
+.tabCaption > input[type='radio'] {
 	display: 					none;
 }
-section > input[type='radio']:checked+label {
-	border-bottom:				4px solid rgba(255, 192, 0,1)
-}
-section > input[type='radio'].first:checked~.first {
+
+.tabCaption > input[type='radio'].first:checked~.first {
 	display:					block !important;
 }
-section > input[type='radio'].second:checked~.second {
+.tabCaption > input[type='radio'].second:checked~.second {
 	display:					block !important;
 }
-section > input[type='radio'].third:checked~.third {
+.tabCaption > input[type='radio'].third:checked~.third {
 	display:					block !important;
 }
-section > input[type='radio'].fourth:checked~.fourth {
+.tabCaption > input[type='radio'].fourth:checked~.fourth {
 	display:					block !important;
 }
-section > input[type='radio'].fifth:checked~.fifth {
+.tabCaption > input[type='radio'].fifth:checked~.fifth {
 	display:					block !important;
 }
 
@@ -192,31 +215,36 @@ section > input[type='radio'].fifth:checked~.fifth {
 	left:						0px;
 	width:						100%;
 }
-.descClicker > .description {
-	display: 					none;
-	font-size:					14px;
-	position:					relative;
-	top:						5px;
-	padding-left:				10px;
-	padding-right:				10px;
-	word-spacing: 				normal;
-}
-.descClicker > label{
 
-	width:						33.3%;
+.descClicker > label{
 	background-color:			rgba(255, 255, 255, 0);
 	height: 					20px;
-
 }
 
-
+.descClicker > .tabCaption > input[type='radio']:checked+label {
+	border-bottom:				4px solid rgba(255, 192, 0,1)
+}
 
  
-, /**********************************
+/**********************************
  Заголовок переключателя СК
  **********************************/
- .companyClicker {
+.companyClicker {
 	position:					relative;
-	top:						40px;
+	top:						-40px;
  }
 
+.companyClicker > .tabCaption > input[type='radio']:checked+label {
+	border-bottom:				4px solid rgba(100, 100, 100,1);
+	z-index: 					1;
+}
+
+.companyClicker > .tabCaption > .description {
+	padding-top: 				13px;
+	top:						-2px;
+	background-color: 			#ccc;
+	border-bottom-left-radius:	5px;
+	border-bottom-right-radius:	5px;
+	height:						25px;
+	z-index: 					0;
+}
