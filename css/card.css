@@ -133,38 +133,64 @@ div.enabled > .mask {
 	background-size:			contain;
 	background-repeat:			no-repeat;
  }
- 
- /**********************************
-Переключатель описаний
+
+/**********************************
+Общая настройка табов внутри карточек
  **********************************/
-.descClicker {
+
+article > section {
 	position:					relative;
-	top:						-120px;
-	left:						0px;
-	width:						100%;
 	word-spacing: 				-2.5px;
 }
-.descClicker > hr {
+
+section > label {
+	text-align:					center;
+	font-weight:				bold;
+	font-size:					14px;
+	cursor: 					pointer;
+	display:					inline-block;
+	position:					relative;
+}
+
+section > hr {
 	border:						0px;
 	background-color: 			#eee;
 	height:						2px;
 	position:					relative;
 	top:						29px;
+	position:					relative;
 }
-.descClicker > input[type='radio'] {
+section > input[type='radio'] {
 	display: 					none;
 }
-.descClicker > input[type='radio']:checked+label {
+section > input[type='radio']:checked+label {
 	border-bottom:				4px solid rgba(255, 192, 0,1)
 }
-.descClicker > input[type='radio'].first:checked~.first {
+section > input[type='radio'].first:checked~.first {
 	display:					block !important;
 }
-.descClicker > input[type='radio'].second:checked~.second {
+section > input[type='radio'].second:checked~.second {
 	display:					block !important;
 }
-.descClicker > input[type='radio'].third:checked~.third {
+section > input[type='radio'].third:checked~.third {
 	display:					block !important;
+}
+section > input[type='radio'].fourth:checked~.fourth {
+	display:					block !important;
+}
+section > input[type='radio'].fifth:checked~.fifth {
+	display:					block !important;
+}
+
+
+
+/**********************************
+Переключатель описаний
+ **********************************/
+.descClicker {
+	top:						-120px;
+	left:						0px;
+	width:						100%;
 }
 .descClicker > .description {
 	display: 					none;
@@ -176,15 +202,11 @@ div.enabled > .mask {
 	word-spacing: 				normal;
 }
 .descClicker > label{
-	font-size:					14px;
+
 	width:						33.3%;
-	text-align:					center;
-	font-weight:				bold;
 	background-color:			rgba(255, 255, 255, 0);
-	display:					inline-block;
-	cursor: 					pointer;
 	height: 					20px;
-	position:					relative;
+
 }
 
 
