@@ -140,17 +140,40 @@ div.enabled > .mask {
 .descClicker {
 	position:					relative;
 	top:						-120px;
-	height:						20px;
-	line-height: 				19px;
 	left:						0px;
 	width:						100%;
-	border-bottom:				2px solid #ddd;
- }
+	word-spacing: 				-2.5px;
+}
+.descClicker > hr {
+	border:						0px;
+	background-color: 			#eee;
+	height:						2px;
+	position:					relative;
+	top:						29px;
+}
 .descClicker > input[type='radio'] {
 	display: 					none;
 }
+.descClicker > input[type='radio']:checked+label {
+	border-bottom:				4px solid rgba(255, 192, 0,1)
+}
+.descClicker > input[type='radio'].first:checked~.first {
+	display:					block !important;
+}
+.descClicker > input[type='radio'].second:checked~.second {
+	display:					block !important;
+}
+.descClicker > input[type='radio'].third:checked~.third {
+	display:					block !important;
+}
 .descClicker > .description {
 	display: 					none;
+	font-size:					14px;
+	position:					relative;
+	top:						5px;
+	padding-left:				10px;
+	padding-right:				10px;
+	word-spacing: 				normal;
 }
 .descClicker > label{
 	font-size:					14px;
@@ -158,16 +181,12 @@ div.enabled > .mask {
 	text-align:					center;
 	font-weight:				bold;
 	background-color:			rgba(255, 255, 255, 0);
-	float:						left;
-	/*display:					inline-block;*/
+	display:					inline-block;
 	cursor: 					pointer;
+	height: 					20px;
+	position:					relative;
 }
-.descClicker > input[type='radio']:checked+label {
-	box-shadow:						0 4px 0px rgba(255, 192, 0,1)
-}
-.descClicker > input[type='radio']:checked+p {
-	display:					block !important;
-}
+
 
 
  
