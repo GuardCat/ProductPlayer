@@ -91,9 +91,13 @@ div.enabled > .mask {
 .name {
 	position:					relative;
 	left:						10px;
-	top:						23px;
-	font-size:					30px;
+	top:						20px;
+	font-size:					25px;
 	font-weight:				bold;
+	display:					block;
+	line-height:				25px;
+	height:						50px;
+	width:						250px;
 }
 
 /**********************************
@@ -165,7 +169,7 @@ section > .tabCaption > * {
 .tabCaption > label {
 	text-align:					center;
 	font-weight:				bold;
-	font-size:					11px;
+	font-size:					10px;
 	cursor: 					pointer;
 	display:					inline-block;
 	position:					relative;
@@ -214,7 +218,7 @@ section > hr {
 Переключатель описаний
  **********************************/
 .descClicker {
-	top:						-120px;
+	top:						-130px;
 	left:						0px;
 	width:						100%;
 }
@@ -234,7 +238,7 @@ section > hr {
  **********************************/
 .companyClicker {
 	position:					relative;
-	top:						-39px;
+	top:						-49px;
  }
 
 .companyClicker > .tabCaption > input[type='radio']:checked+label {

@@ -84,6 +84,75 @@
 
 
 	</article>
+	
+		<article>
+	
+		<div class="cardHeader SA">
+			<div class="type">SA</div>
+
+			<div class="categories icons">
+				<div class="insurance"				>	<img class="icon" src="img/icons/category/insurance.png">		<div class="mask"></div>	</div>
+				<div class="consultation enabled"	>	<img class="icon" src="img/icons/category/consultation.png">	<div class="mask"></div>	</div>
+				<div class="service"				>	<img class="icon" src="img/icons/category/service.png">			<div class="mask"></div>	</div>
+			</div>
+
+		</div>
+
+		<div class="name">Здоровье под контролем</div>
+		
+		<div class="segments icons">
+			<div class="property"					>	<img class="icon" src="img/icons/segment/property.png">			<div class="mask"></div>	</div>
+			<div class="law enabled"				>	<img class="icon" src="img/icons/segment/law.png">				<div class="mask"></div>	</div>
+			<div class="health"						>	<img class="icon" src="img/icons/segment/health.png">			<div class="mask"></div>	</div>
+			<div class="job"						>	<img class="icon" src="img/icons/segment/job.png">				<div class="mask"></div>	</div>
+			<div class="home"						>	<img class="icon" src="img/icons/segment/home.png">				<div class="mask"></div>	</div>
+			<div class="road"						>	<img class="icon" src="img/icons/segment/road.png">				<div class="mask"></div>	</div>
+		</div>
+		
+		<img class="cover"	src="img/covers/SA/lawer_24.png">
+		
+		<div class="map"	>
+			<div class="RC">СЗРЦ</div>
+			<div class="RC">СБРЦ</div>
+			<div class="RC">ЮЖРЦ</div>
+			<div class="RC">ВВРЦ</div>
+			<div class="RC">ВУРЦ</div>
+			<div class="RC">ДВРЦ</div>
+			<div class="RC">МСРЦ</div>
+		</div>
+		
+		<section class="descClicker">
+			<hr>
+			<div class="tabCaption">
+				<input id="descinput11" type="radio" name="desc2" class="first"><label for="descinput11">ЭКОНОМ</label>
+				<input id="descinput21" type="radio" name="desc2" class="second" checked><label for="descinput21">СТАНДАРТ</label>		
+				<input id="descinput31" type="radio" name="desc2" class="third"><label for="descinput31">ПРЕМИУМ</label>
+<div class="breaker"></div>
+				
+				<div class="description first">Здесь, значицца, описание Эконом</div>			
+				<div class="description second">Здесь, значицца, описание Стандарт</div>
+				<div class="description third">Здесь, значицца, описание Премиум</div>
+			</div>
+		</section>	
+		
+		<section class="companyClicker">
+			<hr>
+			<div class="tabCaption">
+				<input id="descinput111" type="radio" name="desc22" class="first"><label for="descinput111">АЛЬФА</label>
+				<input id="descinput121" type="radio" name="desc22" class="second" checked><label for="descinput121">РОСГОССТРАХ</label>		
+				<input id="descinput131" type="radio" name="desc22" class="third"><label for="descinput131">РЕНЕССАНС</label>
+				<input id="descinput141" type="radio" name="desc22" class="fourth"><label for="descinput141">ЗЕТТА</label>
+				<div class="breaker"></div>
+				
+				<div class="description first">АЛЬфастрах</div>			
+				<div class="description second">РГС</div>
+				<div class="description third">Про РЕНЕССАНС</div>
+				<div class="description fourth">Про зетту</div>
+			</div>
+		</section>	
+
+
+	</article>
 
 </div>
 
@@ -112,7 +181,7 @@ const data = {
 
 function director( ) {
 	base = JSON.parse( decodeURIComponent(base) ); /* определение глобальной переменной base зашито в jsonp */
-	let cards = new CardMaker(base.desc, document.querySelector(".cardContainer") );
+	//let cards = new CardMaker(base.desc, document.querySelector(".cardContainer") );
 }
 
 
