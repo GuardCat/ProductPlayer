@@ -1,6 +1,6 @@
 /*jshint esversion: 6 */
 /*jshint browser: true */
-class CardMaker {
+/*class CardMaker {
 	constructor(table, container) {
 		let result = [], fragment = document.createDocumentFragment();
 		table.forEach( el => {
@@ -25,5 +25,11 @@ class CardMaker {
 		} );
 		this.cards = result;
 		container.appendChild(fragment);
+	}
+}*/
+
+class Card {
+	constructor(table, template, funcMatrix) {
+		
 	}
 }
