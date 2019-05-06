@@ -196,6 +196,13 @@ section > hr {
 	display: 					none;
 }
 
+input[type='radio']+label {
+	color:						gray;
+}
+input[type='radio']:checked+label {
+	color:						black;
+}
+
 .tabCaption > input[type='radio'].first:checked~.first {
 	display:					block !important;
 }
@@ -229,7 +236,7 @@ section > hr {
 }
 
 .descClicker > .tabCaption > input[type='radio']:checked+label {
-	border-bottom:				4px solid rgba(255, 192, 0,1)
+	border-bottom:				4px solid rgba(255, 192, 0,1);
 }
 
  
