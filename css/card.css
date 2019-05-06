@@ -233,7 +233,7 @@ section > hr {
  **********************************/
 .companyClicker {
 	position:					relative;
-	top:						-40px;
+	top:						-39px;
  }
 
 .companyClicker > .tabCaption > input[type='radio']:checked+label {
@@ -250,6 +250,6 @@ section > hr {
 	background-color: 			#ccc;
 	border-bottom-left-radius:	5px;
 	border-bottom-right-radius:	5px;
-	height:						50px;;
+	height:						50px;
 	z-index: 					0;
 }
