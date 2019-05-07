@@ -182,9 +182,19 @@ article .description {
 	display: 					none;
 	position:					relative;
 	top:						5px;
-	font-size: 					13px;
+	font-size: 					14px;
 	padding-left:				10px;
 	padding-right:				10px;
+	overflow:					hidden;
+}
+
+article .description > div {
+	font-size: 					12px;
+	border-radius:				3px;
+	padding:					3px;
+	border:						1px solid silver;
+	font-weight:				bold;
+	margin-bottom:				5px;
 }
 
 section > hr {
@@ -241,13 +251,18 @@ input[type='radio']:checked+label {
 	border-bottom:				4px solid rgba(255, 192, 0,1);
 }
 
+.descClicker > .tabCaption > .description {
+	height:						110px;
+	background-color:			white;
+	line-height:				1em;
+}
  
 /**********************************
  Заголовок переключателя СК
  **********************************/
 .companyClicker {
 	position:					relative;
-	top:						-49px;
+	top:						-145px;
  }
 
 .companyClicker > .tabCaption > input[type='radio']:checked+label {
