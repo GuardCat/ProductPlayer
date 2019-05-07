@@ -46,6 +46,7 @@ class SACard {
 		function makeSegmentIcons( ) {
 			let result = "";
 			base.segment.forEach(	(segment) => {
+				console.log(segment.url);
 				result += `<div ${ entry.segment.value.some( (e) => e.name === segment.name ) ? `class="enabled"` : "" }>	                <img class="icon" src="${ segment.url }">			<div class="mask"></div>	</div>`;
 			});
 			
