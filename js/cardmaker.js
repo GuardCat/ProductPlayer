@@ -121,8 +121,7 @@ class SACard {
 					<div class="description tabpad-4"	>Про зетту</div>
 					<div class="description tabpad-5"	>Это вымышленная СК</div>
 				</div>
-			</section>
-		`;
+			</section>`;
 		entry.html = this;
 		this.html = document.createElement('article');
 		this.html.innerHTML = source;
