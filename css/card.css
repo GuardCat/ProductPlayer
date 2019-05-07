@@ -113,9 +113,10 @@ div.enabled > .mask {
 /**********************************
  Заглавная картинка
  **********************************/
- .cover {
+.cover {
 	position:					relative;
 	width:						100px;
+	height:						195px;
 	top:						-57px;
 	right:						calc(-100% + 100px);
  }
