@@ -297,6 +297,6 @@ input[type='radio']:checked+label {
 }
 
 .companyClicker > hr {
-	border-bottom:				1px solid #bbb;
-	top:						28px;
+	border-bottom:				2px solid #bbb;
+	top:						29px;
 }
