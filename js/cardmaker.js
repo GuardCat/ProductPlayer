@@ -37,7 +37,6 @@ class SACard {
 		function makeCategoryIcons( ) {
 			let result = "";
 			base.category.forEach(	function(category) {
-								console.log(category.url);
 				result += `<div ${category.name === entry.category.source ? `class="enabled"` : "" }>	<img class="icon" src="${ category.url }">	<div class="mask"></div>	</div>`;
 			});
 			
@@ -57,6 +56,32 @@ class SACard {
 			let result = "";
 			entry.geography.source.forEach( (rc) => {
 				result += `<div class="RC">${ rc }</div>`;
+			} );
+			return result;
+		}
+		
+		function makeDescriptionTabs( ) {
+			let result = "", prices = entry.price.split(";"), names = entry.priceName.split(";");
+			
+			prices.forEach( (e, i) => {
+				result += `<input id="descinput${ i }-${ cardNumber }" type="radio" name="desc-${ cardNumber }" class="tabpad-${ i }" ${ i === 1 ? "checked" : "" }> <label for="descinput${ i }-${ cardNumber }">${ names[i] }</label>`;
+			} );
+			
+			return result;
+		}
+		
+		function makeDescriptions( ) {
+			let result = "", prices = entry.price.split(";"), names = entry.priceName.split(";");
+			
+			prices.forEach( (e, i) => {
+				console.log(entry["value" + (i + 1)]);
+				result += `
+					<div class="description tabpad-${ i }">
+						<div>Цена: ${ e } р. ${ entry["value" + (i + 1)] }</div>
+
+						${ entry.description }
+					</div>
+				`;
 			} );
 			return result;
 		}
@@ -86,17 +111,12 @@ class SACard {
 			<section class="descClicker">
 				<hr>
 				<div class="tabCaption">
-					<input id="descinput1-${ cardNumber }" type="radio" name="desc-${ cardNumber }" class="tabpad-1">				<label for="descinput1-${ cardNumber }">ЭКОНОМ</label>
-					<input id="descinput2-${ cardNumber }" type="radio" name="desc-${ cardNumber }" class="tabpad-2" checked>		<label for="descinput2-${ cardNumber }">СТАНДАРТ</label>		
-					<input id="descinput3-${ cardNumber }" type="radio" name="desc-${ cardNumber }" class="tabpad-3">				<label for="descinput3-${ cardNumber }">ПРЕМИУМ</label>
+					
+					${ makeDescriptionTabs( ) }
+					
 					<div class="breaker"></div>
 
-					<div class="description tabpad-1"	>
-						<div>Цена: 800 рублей. Покрытие: 400 000 рублей. 10 консультаций</div>
-						Устная и письменная консультация из любой точки мира в любой момент, позволит защитить свои права и сэкономить.
-					</div>			
-					<div class="description tabpad-2"	>Здесь, значицца, описание Стандарт</div>
-					<div class="description tabpad-3"	>Здесь, значицца, описание Премиум</div>
+					${ makeDescriptions( ) }
 				</div>
 			</section>	
 
