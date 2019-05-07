@@ -273,16 +273,20 @@ input[type='radio']:checked+label {
     align-items:				top;
 	width:						100%;
 }
+.companyClicker > hr {
+	border-bottom:				2px solid #bbb;
+	top:						29px;
+}
+
 .companyimg {
 	width:						22px;
 	height:						22px;
 	position:					relative;
-	top:						-3px;
-	
+	top:						-5px;	
 }
- .companyClicker > .tabCaption > .description > a {
+.companyClicker > .tabCaption > .description > a {
 	position:					relative;
-	top:						-11px;
+	top:						-13px;
 	border:						0;
 	padding-top:				6px;
 	padding-bottom:				6px;
@@ -296,7 +300,3 @@ input[type='radio']:checked+label {
 	margin-left:				10px;
 }
 
-.companyClicker > hr {
-	border-bottom:				2px solid #bbb;
-	top:						29px;
-}
