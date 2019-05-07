@@ -169,6 +169,7 @@ section > .tabCaption > * {
 
 .tabCaption > label {
 	text-align:					center;
+	text-transform:				uppercase;
 	font-weight:				bold;
 	font-size:					10px;
 	cursor: 					pointer;
@@ -188,7 +189,7 @@ article .description {
 
 section > hr {
 	border:						0px;
-	background-color: 			#eee;
+	background-color: 			#999;
 	height:						2px;
 	position:					relative;
 	top:						27px;
@@ -204,19 +205,19 @@ input[type='radio']:checked+label {
 	color:						black;
 }
 
-.tabCaption > input[type='radio'].first:checked~.first {
+.tabCaption > input[type='radio'].tabpad-1:checked~.tabpad-1 {
 	display:					block !important;
 }
-.tabCaption > input[type='radio'].second:checked~.second {
+.tabCaption > input[type='radio'].tabpad-2:checked~.tabpad-2 {
 	display:					block !important;
 }
-.tabCaption > input[type='radio'].third:checked~.third {
+.tabCaption > input[type='radio'].tabpad-3:checked~.tabpad-3 {
 	display:					block !important;
 }
-.tabCaption > input[type='radio'].fourth:checked~.fourth {
+.tabCaption > input[type='radio'].tabpad-4:checked~.tabpad-4 {
 	display:					block !important;
 }
-.tabCaption > input[type='radio'].fifth:checked~.fifth {
+.tabCaption > input[type='radio'].tabpad-5:checked~.tabpad-5 {
 	display:					block !important;
 }
 
@@ -261,13 +262,12 @@ input[type='radio']:checked+label {
  .companyClicker > .tabCaption > .description {
 	display:					none;
 	position:					relative;
-	padding:					9px;
-	margin-top:					-4px;
+	padding-left:				11px;
+	padding-top:				10px;
+	margin-top:					0px;
 	margin-bottom:				0px;
-	top:						0px;
-	background-color: 			#ccc;
-	border-bottom-left-radius:	5px;
-	border-bottom-right-radius:	5px;
+	top:						-1px;
+	background-color: 			#bbb;
 	height:						30px;
 	z-index: 					0;
     align-items:				top;
@@ -276,19 +276,22 @@ input[type='radio']:checked+label {
 .companyimg {
 	width:						22px;
 	height:						22px;
+	position:					relative;
+	top:						-3px;
+	
 }
  .companyClicker > .tabCaption > .description > a {
 	position:					relative;
-	top:						-8px;
+	top:						-11px;
 	border:						0;
 	padding-top:				6px;
 	padding-bottom:				6px;
-	padding-left:				15px;
-	padding-right:				15px;
+	padding-left:				10px;
+	padding-right:				10px;
 	border-radius:				30px;
 	background-color:			white;
 	text-decoration:			none;
 	color:						black;
 	font-size:					9px;
-	margin-left:				2px;
+	margin-left:				10px;
 }
