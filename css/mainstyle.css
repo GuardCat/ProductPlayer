@@ -1,3 +1,20 @@
+
+.mdl-card__supporting-text {
+	padding:			0 !important;
+}
+
+.otp-layout__header {
+	display:			none !important;
+}
+
+.username {
+	display:			none !important;
+}
+
+.page-header.navbar .top-menu .navbar-nav > li.dropdown > .dropdown-toggle {
+	width:				30px !important;
+}
+
 body {
 	font-family:		Roboto, Calibri, Pragmatica, Arial;
 }
