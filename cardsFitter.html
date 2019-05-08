@@ -123,9 +123,9 @@ const data = {
 
 function director( ) {
 	base = JSON.parse( decodeURIComponent(base) ); /* определение глобальной переменной base зашито в jsonp */
-	base.desc.forEach( ( e, i ) => {
+	/*base.desc.forEach( ( e, i ) => {
 		document.querySelector(".cardContainer").appendChild( (new SACard(e, i, base)).html );
-	} );
+	} );*/
 	//let cards = new CardMaker(base.desc, document.querySelector(".cardContainer") );
 }
 

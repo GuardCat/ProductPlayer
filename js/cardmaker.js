@@ -125,7 +125,9 @@ class SACard {
 		
 
 				</div>
-			</section>`;
+			</section>
+		`;
+		
 		entry.html = this;
 		this.html = document.createElement('article');
 		this.html.innerHTML = source;
