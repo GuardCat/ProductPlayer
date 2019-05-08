@@ -9,9 +9,11 @@
 
 <body>
 
-<input type="search" id="nameSearch">
 	
 <div class="cardContainer">
+	<input type="search" id="nameSearch">
+	<div class="clearer" onclick="document.querySelector('#nameSearch').value='';filterByName( );">✖</div>
+	<div class="breaker"></div>
 </div>
 
 <script type="text/javascript" id="observer"	></script>
@@ -63,9 +65,6 @@ function show(arr) {
 	arr.forEach( (e) => e.html.show( ) );	
 }
 	
-
-	
-
 
 function director( ) {
 	base = JSON.parse( decodeURIComponent(base) ); /* определение глобальной переменной base зашито в jsonp */

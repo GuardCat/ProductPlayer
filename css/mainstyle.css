@@ -17,9 +17,25 @@ input[type='search'] {
 	height:				30px;
 	font-size: 			15px;
 	border:				2px solid #FFC000;
-	margin-bottom:		10px;
+    margin:				10px;
+	width:				300px;
 	padding:			5px;
 	border-radius:		5px;
+}
+
+.clearer {
+	font-family:		monospace;
+	font-weight:		bold;
+	text-transform: 	capitalize;
+	text-align:			center;
+	padding-left:		8px;
+	padding-right:		8px;
+	padding-top:		5px;
+	padding-bottom:		5px;
+	border-radius:		50px;
+	border:				2px solid #FFC000;
+	cursor: 			pointer;
+	background-color:	white;
 }
 
 h1 {
