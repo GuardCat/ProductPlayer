@@ -1,3 +1,6 @@
+/*jshint esversion: 6 */
+/*jshint browser: true */
+
 // EventList v 1.2
 "use strict";
 
@@ -8,14 +11,14 @@ class EventList {
 
 	add(event, handler) {
 		if ( !(event in this.list) ) this.list[event] = [ ];
-		if ( !(handler instanceof Function) ) throw new Error("You're trying to add to EventList not Function.")
+		if ( !(handler instanceof Function) ) throw new Error("You're trying to add to EventList not Function.");
 		this.list[event].push(handler);
 		return true;
 	}
   
 	del(event, handler) {
 		if ( !(event in this.list) || !this.list[event].length ) return false;
-		this.list[event].forEach( (el, i) => { if (el === handler) return this.list[event].splice(i, 1) } );
+		this.list[event].forEach( (el, i) => { if (el === handler) return this.list[event].splice(i, 1); } );
 		return false;  
 	}
   
