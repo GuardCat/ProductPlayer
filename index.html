@@ -9,7 +9,8 @@
 
 <body>
 
-
+<input type="search" id="nameSearch">
+	
 <div class="cardContainer">
 </div>
 
@@ -23,25 +24,60 @@
 
 <script type="text/javascript">
 
-const data = {
-	forLoad: {
-		observer:	{attribute:	"src",	value:	"js/observer.js"},
-		fetcher:	{attribute: "src",	value:	"js/fetcher.js"},
-		utilities:	{attribute:	"src",	value:	"js/utilities.js"},
-		cardmaker:	{attribute: "src",	value:	"js/cardmaker.js"},
-		base:		{attribute:	"src",	value:	"base.jsonp"},
-		mainstyle:	{attribute:	"href",	value:	"css/mainstyle.css"},
-		cardstyle:	{attribute:	"href",	value:	"css/card.css"}
-	}
-};
+const 
+	data = {
+		forLoad: {
+			observer:	{attribute:	"src",	value:	"js/observer.js"},
+			fetcher:	{attribute: "src",	value:	"js/fetcher.js"},
+			utilities:	{attribute:	"src",	value:	"js/utilities.js"},
+			cardmaker:	{attribute: "src",	value:	"js/cardmaker.js"},
+			base:		{attribute:	"src",	value:	"base.jsonp"},
+			mainstyle:	{attribute:	"href",	value:	"css/mainstyle.css"},
+			cardstyle:	{attribute:	"href",	value:	"css/card.css"}
+		}
+	},
+	
+	filterByName = ( ( ) => {
+		let oldValue
+		return ( ) => {
+			let input = document.querySelector("#nameSearch"), filtered;
+			if (oldValue === input.value) return false;
+			//if (input.value.length < 3) return false;
+
+			filtered = base.desc.filter( (e) => {
+				let r = new RegExp(input.value);
+				return !r.test(e.name);
+			} );
+
+			show(base.desc);
+			hide(filtered);
+		}
+	} ) ( )
+;
+	
+function hide(arr) {
+	arr.forEach( (e) => e.html.hide( ) );
+}
+	
+function show(arr) {
+	arr.forEach( (e) => e.html.show( ) );	
+}
+	
+
+	
+
 
 function director( ) {
 	base = JSON.parse( decodeURIComponent(base) ); /* определение глобальной переменной base зашито в jsonp */
 	base.desc.forEach( ( e, i ) => {
 		document.querySelector(".cardContainer").appendChild( (new SACard(e, i, base)).html );
 	} );
+	
+	document.querySelector("#nameSearch").addEventListener("keyup", filterByName, false);
+	
 	//let cards = new CardMaker(base.desc, document.querySelector(".cardContainer") );
 }
+
 
 
 new LoadList(data.forLoad, director);
