@@ -59,8 +59,8 @@ class SACard {
 		function makeCompanyTabs( ) {
 			let result = "", names = entry.company.value;
 			
-			entry.company.value.forEach( (e, i) => {
-				result += `<input id="companyinput${ i }-${ cardNumber }" type="radio" name="company-${ cardNumber }" class="tabpad-${ i }" ${ i === 0 ? "checked" : "" }>			<label for="companyinput${ i }-${ cardNumber }">${ e.shortname }</label>`;
+			entry.company.value.forEach( (e, i, arr) => {
+				result += `<input id="companyinput${ i }-${ cardNumber }" type="radio" name="company-${ cardNumber }" class="tabpad-${ i }" ${ i === 0 ? "checked" : "" }>			<label ${arr.length > 1 ? "" : 'class="leftit"'} for="companyinput${ i }-${ cardNumber }">${ e.shortname }</label>`;
 			} );
 			
 			return result;
