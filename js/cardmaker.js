@@ -1,34 +1,6 @@
 /*jshint esversion: 6 */
 /*jshint browser: true */
 
-/*class CardMaker {
-	constructor(table, container) {
-		let result = [], fragment = document.createDocumentFragment();
-		table.forEach( el => {
-			let card = document.createElement("article"), row, h, text;
-			for(let col in el) {
-				row = document.createElement("div");
-				h = document.createElement("b");
-				text = document.createElement("span");
-				h.innerHTML = col + ": ";
-				if(col === "pictureurl") {
-					text = document.createElement("img");
-					text.src = el[col];
-				} else {
-					text.innerHTML = el[col].source ? el[col].source : el[col];
-				}
-				row.appendChild(h);
-				row.appendChild(text);
-				card.appendChild(row);
-			}
-			fragment.appendChild(card);
-			result.push(card);
-		} );
-		this.cards = result;
-		container.appendChild(fragment);
-	}
-}*/
-
 class SACard {
 	constructor(entry, cardNumber, base) {
 		if (cardNumber === null || (typeof cardNumber !== "number") ) throw new Error (`SACard constructor: got wrong card's number: ${cardNumber}`);
@@ -69,12 +41,10 @@ class SACard {
 			
 			return result;
 		}
-		
 		function makeDescriptions( ) {
 			let result = "", prices = entry.price.split(";"), names = entry.priceName.split(";");
 			
 			prices.forEach( (e, i) => {
-				console.log(entry["value" + (i + 1)]);
 				result += `
 					<div class="description tabpad-${ i }">
 						<div>Цена: ${ e } р. ${ entry["value" + (i + 1)] }</div>
@@ -83,6 +53,32 @@ class SACard {
 					</div>
 				`;
 			} );
+			return result;
+		}
+		
+		function makeCompanyTabs( ) {
+			let result = "", names = entry.company.value;
+			
+			entry.company.value.forEach( (e, i) => {
+				result += `<input id="companyinput${ i }-${ cardNumber }" type="radio" name="company-${ cardNumber }" class="tabpad-${ i }" ${ i === 0 ? "checked" : "" }>			<label for="companyinput${ i }-${ cardNumber }">${ e.shortname }</label>`;
+			} );
+			
+			return result;
+		}
+		function makeCompanyDescriptions( ) {
+			let result = "", names = entry.company.value, polices = entry.policyurl ? entry.policyurl.split(";") : "" ;
+			
+			entry.company.value.forEach( (e, i) => {
+				result += `
+					<div class="description tabpad-${ i }">
+						<img src="${ e.logo }" class="companyimg">
+						<a class="policy ${ polices ? "" : "hidden" }" href="${ polices ? polices[i] : "" }">ПОЛИС</a>
+						<a class="policy ${ e.instructionurl ? "" : "hidden" }" href="${ e.instructionurl }">ИНСТРУКЦИЯ</a>
+						<a class="policy" href="${ e.war }">ОФОРМЛЕНИЕ</a>
+					</div>	
+				`;
+			} );
+			
 			return result;
 		}
 		
@@ -123,24 +119,11 @@ class SACard {
 			<section class="companyClicker">
 				<hr>
 				<div class="tabCaption">
-					<input id="companyinput1-${ cardNumber }" type="radio" name="company-${ cardNumber }" class="tabpad-1">			<label for="companyinput1-${ cardNumber }">АЛЬФА</label>
-					<input id="companyinput2-${ cardNumber }" type="radio" name="company-${ cardNumber }" class="tabpad-2" checked>	<label for="companyinput2-${ cardNumber }">РОСГОССТРАХ</label>		
-					<input id="companyinput3-${ cardNumber }" type="radio" name="company-${ cardNumber }" class="tabpad-3">			<label for="companyinput3-${ cardNumber }">Ренессанс</label>
-					<input id="companyinput4-${ cardNumber }" type="radio" name="company-${ cardNumber }" class="tabpad-4">			<label for="companyinput4-${ cardNumber }">ЗЕТТА</label>
-					<input id="companyinput5-${ cardNumber }" type="radio" name="company-${ cardNumber }" class="tabpad-5">			<label for="companyinput5-${ cardNumber }">ЕЮС</label>
-					<input id="companyinput5-${ cardNumber }" type="radio" name="company-${ cardNumber }" class="tabpad-6">			<label for="companyinput5-${ cardNumber }">ВСК</label>
+					${ makeCompanyTabs( ) }
 					<div class="breaker"></div>
+					${ makeCompanyDescriptions( ) }
+		
 
-					<div class="description tabpad-1">
-						<img src="img/companies/alpha.png" class="companyimg">
-						<a class="policy" href="https://webtutor.otpbank.ru/download_file.html?file_id=6668274844734395514">ПОЛИС</a>
-						<a class="policy" href="https://webtutor.otpbank.ru/download_file.html?file_id=6668274844734395514">ИНСТРУКЦИЯ</a>
-						<a class="policy" href="https://webtutor.otpbank.ru/download_file.html?file_id=6668274844734395514">ОФОРМЛЕНИЕ</a>
-					</div>			
-					<div class="description tabpad-2"	>РГС</div>
-					<div class="description tabpad-3"	>Про РЕНЕССАНС</div>
-					<div class="description tabpad-4"	>Про зетту</div>
-					<div class="description tabpad-5"	>Это вымышленная СК</div>
 				</div>
 			</section>`;
 		entry.html = this;
