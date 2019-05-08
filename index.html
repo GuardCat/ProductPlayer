@@ -47,8 +47,8 @@ const
 			//if (input.value.length < 3) return false;
 
 			filtered = base.desc.filter( (e) => {
-				let r = new RegExp(input.value);
-				return !r.test(e.name);
+				let r = new RegExp( ("" + input.value).toLowerCase( ) );
+				return !r.test(e.name.toLowerCase( ));
 			} );
 
 			show(base.desc);
