@@ -1,87 +1,9 @@
 <script type="text/javascript">
 
-	document.write(`
-<!doctype HTML>
-<html>
-<head>
-	<link rel="stylesheet" id="mainstyle"></link>
-	<link rel="stylesheet" id="cardstyle"></link>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta charset="utf-8">
-</head>
-
-<body>
-
+	function loadIt( ) { 
+		document.write( decodeURIComponent(`%3C!doctype%20HTML%3E%0A%3Chtml%3E%0A%3Chead%3E%0A%09%3Clink%20rel%3D%22stylesheet%22%20id%3D%22mainstyle%22%3E%3C%2Flink%3E%0A%09%3Clink%20rel%3D%22stylesheet%22%20id%3D%22cardstyle%22%3E%3C%2Flink%3E%0A%09%3Cmeta%20name%3D%22viewport%22%20content%3D%22width%3Ddevice-width%2C%20initial-scale%3D1%22%3E%0A%09%3Cmeta%20charset%3D%22utf-8%22%3E%0A%3C%2Fhead%3E%0A%0A%3Cbody%3E%0A%0A%09%0A%3Cdiv%20class%3D%22cardContainer%22%3E%0A%09%3Cinput%20type%3D%22search%22%20id%3D%22nameSearch%22%3E%0A%09%3Cdiv%20class%3D%22clearer%22%20onclick%3D%22document.querySelector('%23nameSearch').value%3D''%3BfilterByName(%20)%3B%22%3E%E2%9C%96%3C%2Fdiv%3E%0A%09%3Cdiv%20class%3D%22breaker%22%3E%3C%2Fdiv%3E%0A%3C%2Fdiv%3E%0A%0A%3Cscript%20type%3D%22text%2Fjavascript%22%20id%3D%22observer%22%09%3E%3C%2Fscript%3E%0A%3Cscript%20type%3D%22text%2Fjavascript%22%20id%3D%22base%22%09%09%3E%3C%2Fscript%3E%0A%3Cscript%20type%3D%22text%2Fjavascript%22%20id%3D%22cardmaker%22%09%3E%3C%2Fscript%3E%0A%3Cscript%20type%3D%22text%2Fjavascript%22%20id%3D%22loadlist%22%20src%3D%22https%3A%2F%2Fwebtutor.otpbank.ru%2Fdownload_file.html%3Ffile_id%3D6688621698217240862%22%3E%3C%2Fscript%3E%0A%0A%0A%3Cscript%20type%3D%22text%2Fjavascript%22%3E%0A%0Aconst%20%0A%09data%20%3D%20%7B%0A%09%09forLoad%3A%20%7B%0A%09%09%09observer%3A%09%7Battribute%3A%09%22src%22%2C%09value%3A%09%22https%3A%2F%2Fwebtutor.otpbank.ru%2Fdownload_file.html%3Ffile_id%3D6688620357795999002%22%7D%2C%0A%09%09%09cardmaker%3A%09%7Battribute%3A%20%22src%22%2C%09value%3A%09%22https%3A%2F%2Fwebtutor.otpbank.ru%2Fdownload_file.html%3Ffile_id%3D6688619456793097366%22%7D%2C%0A%09%09%09base%3A%09%09%7Battribute%3A%09%22src%22%2C%09value%3A%09%22https%3A%2F%2Fwebtutor.otpbank.ru%2Fdownload_file.html%3Ffile_id%3D6688620003131661277%22%7D%2C%0A%09%09%09mainstyle%3A%09%7Battribute%3A%09%22href%22%2C%09value%3A%09%22https%3A%2F%2Fwebtutor.otpbank.ru%2Fdownload_file.html%3Ffile_id%3D6688622910443958105%22%7D%2C%0A%09%09%09cardstyle%3A%09%7Battribute%3A%09%22href%22%2C%09value%3A%09%22https%3A%2F%2Fwebtutor.otpbank.ru%2Fdownload_file.html%3Ffile_id%3D6688622446267867876%22%7D%0A%09%09%7D%0A%09%7D%2C%0A%09%0A%09filterByName%20%3D%20(%20(%20)%20%3D%3E%20%7B%0A%09%09let%20oldValue%0A%09%09return%20(%20)%20%3D%3E%20%7B%0A%09%09%09let%20input%20%3D%20document.querySelector(%22%23nameSearch%22)%2C%20filtered%3B%0A%09%09%09if%20(oldValue%20%3D%3D%3D%20input.value)%20return%20false%3B%0A%09%09%09%2F%2Fif%20(input.value.length%20%3C%203)%20return%20false%3B%0A%0A%09%09%09filtered%20%3D%20base.desc.filter(%20(e)%20%3D%3E%20%7B%0A%09%09%09%09let%20r%20%3D%20new%20RegExp(%20(%22%22%20%2B%20input.value).toLowerCase(%20)%20)%3B%0A%09%09%09%09return%20!r.test(e.name.toLowerCase(%20))%3B%0A%09%09%09%7D%20)%3B%0A%0A%09%09%09show(base.desc)%3B%0A%09%09%09hide(filtered)%3B%0A%09%09%7D%0A%09%7D%20)%20(%20)%0A%3B%0A%09%0Afunction%20hide(arr)%20%7B%0A%09arr.forEach(%20(e)%20%3D%3E%20e.html.hide(%20)%20)%3B%0A%7D%0A%09%0Afunction%20show(arr)%20%7B%0A%09arr.forEach(%20(e)%20%3D%3E%20e.html.show(%20)%20)%3B%09%0A%7D%0A%09%0A%0Afunction%20director(%20)%20%7B%0A%09base%20%3D%20JSON.parse(%20decodeURIComponent(base)%20)%3B%20%2F*%20%D0%BE%D0%BF%D1%80%D0%B5%D0%B4%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%B3%D0%BB%D0%BE%D0%B1%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B9%20%D0%BF%D0%B5%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D0%BE%D0%B9%20base%20%D0%B7%D0%B0%D1%88%D0%B8%D1%82%D0%BE%20%D0%B2%20jsonp%20*%2F%0A%09%0A%09base.desc.forEach(%20(%20e%2C%20i%20)%20%3D%3E%20%7B%0A%09%09document.querySelector(%22.cardContainer%22).appendChild(%20(new%20SACard(e%2C%20i%2C%20base)).html%20)%3B%0A%09%7D%20)%3B%0A%09%0A%09document.querySelector(%22%23nameSearch%22).addEventListener(%22keyup%22%2C%20filterByName%2C%20false)%3B%0A%09%0A%7D%0A%0A%0Anew%20LoadList(data.forLoad%2C%20director)%3B%0A%0Adocument.close()%3B%0A%3C%2Fscript%3E%0A%0A%3C%2Fbody%3E%0A%3C%2Fhtml%3E`) ); 
+		document.close();
+	}
 	
-<div class="cardContainer">
-	<input type="search" id="nameSearch">
-	<div class="clearer" onclick="document.querySelector('#nameSearch').value='';filterByName( );">✖</div>
-	<div class="breaker"></div>
-</div>
-
-<script type="text/javascript" id="observer"	></script>
-<script type="text/javascript" id="base"		></script>
-<script type="text/javascript" id="cardmaker"	></script>
-<script type="text/javascript" id="loadlist" src="https://webtutor.otpbank.ru/download_file.html?file_id=6688621698217240862"></script>
-
-
-<script type="text/javascript">
-
-const 
-	data = {
-		forLoad: {
-			observer:	{attribute:	"src",	value:	"https://webtutor.otpbank.ru/download_file.html?file_id=6688620357795999002"},
-			cardmaker:	{attribute: "src",	value:	"https://webtutor.otpbank.ru/download_file.html?file_id=6688619456793097366"},
-			base:		{attribute:	"src",	value:	"https://webtutor.otpbank.ru/download_file.html?file_id=6688620003131661277"},
-			mainstyle:	{attribute:	"href",	value:	"https://webtutor.otpbank.ru/download_file.html?file_id=6688622910443958105"},
-			cardstyle:	{attribute:	"href",	value:	"https://webtutor.otpbank.ru/download_file.html?file_id=6688622446267867876"}
-		}
-	},
-	
-	filterByName = ( ( ) => {
-		let oldValue
-		return ( ) => {
-			let input = document.querySelector("#nameSearch"), filtered;
-			if (oldValue === input.value) return false;
-			//if (input.value.length < 3) return false;
-
-			filtered = base.desc.filter( (e) => {
-				let r = new RegExp( ("" + input.value).toLowerCase( ) );
-				return !r.test(e.name.toLowerCase( ));
-			} );
-
-			show(base.desc);
-			hide(filtered);
-		}
-	} ) ( )
-;
-	
-function hide(arr) {
-	arr.forEach( (e) => e.html.hide( ) );
-}
-	
-function show(arr) {
-	arr.forEach( (e) => e.html.show( ) );	
-}
-	
-
-function director( ) {
-	base = JSON.parse( decodeURIComponent(base) ); /* определение глобальной переменной base зашито в jsonp */
-	
-	base.desc.forEach( ( e, i ) => {
-		document.querySelector(".cardContainer").appendChild( (new SACard(e, i, base)).html );
-	} );
-	
-	document.querySelector("#nameSearch").addEventListener("keyup", filterByName, false);
-	
-}
-
-
-new LoadList(data.forLoad, director);
-
-document.close( );
+	document.addEventListener('load', loadIt, false);
 </script>
-
-</body>
-</html>
-`)
