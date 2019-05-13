@@ -26,16 +26,9 @@ input[type='search'] {
 .clearer {
 	font-family:		monospace;
 	font-weight:		bold;
-	text-transform: 	capitalize;
-	text-align:			center;
-	padding-left:		8px;
-	padding-right:		8px;
-	padding-top:		5px;
-	padding-bottom:		5px;
-	border-radius:		50px;
-	border:				2px solid #FFC000;
+	color:				#FFC000;
 	cursor: 			pointer;
-	background-color:	white;
+	background-color:	rgb(0, 0, 0, 0);
 }
 
 h1 {
