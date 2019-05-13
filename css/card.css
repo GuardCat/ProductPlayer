@@ -310,13 +310,14 @@ input[type='radio']:checked+label {
 	height:						22px;
 	position:					relative;
 	top:						-5px;	
+	vertical-align: 			middle;
 }
 .companyClicker > .tabCaption > .description > a {
+	display:					inline-block;
 	position:					relative;
-	top:						-12px;
+	top:						-5px;
 	border:						0;
-	padding-top:				6px;
-	padding-bottom:				6px;
+	padding-top:				7px;
 	padding-left:				10px;
 	padding-right:				10px;
 	border-radius:				30px;
@@ -325,6 +326,8 @@ input[type='radio']:checked+label {
 	color:						black;
 	font-size:					9px;
 	margin-left:				6px;
+	vertical-align: 			middle;
+	height:						15px;
 }
 
 .companyClicker > .tabCaption > .description > a[href=''] {
