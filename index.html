@@ -1,6 +1,7 @@
 <!doctype HTML>
 <html>
 <head>
+	<title>Комиссионные продукты POS</title>
 	<link rel="stylesheet" id="mainstyle"></link>
 	<link rel="stylesheet" id="cardstyle"></link>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,10 +10,12 @@
 
 <body>
 
-	
+<h1>Комиссионные продукты POS</h1>
+
+
 <div class="cardContainer">
 	<input type="search" id="nameSearch">
-	<div class="clearer" onclick="document.querySelector('#nameSearch').value='';filterByName( );">✖</div>
+	<div class="clearer" onclick="document.querySelector('#nameSearch').value='';filterByName( );">&times;</div>
 	<div class="breaker"></div>
 </div>
 
@@ -24,7 +27,7 @@
 
 <script type="text/javascript">
 
-const 
+const
 	data = {
 		forLoad: {
 			observer:	{attribute:	"src",	value:	"js/observer.js"},
@@ -34,7 +37,7 @@ const
 			cardstyle:	{attribute:	"href",	value:	"css/card.css"}
 		}
 	},
-	
+
 	filterByName = ( ( ) => {
 		let oldValue
 		return ( ) => {
@@ -52,25 +55,25 @@ const
 		}
 	} ) ( )
 ;
-	
+
 function hide(arr) {
 	arr.forEach( (e) => e.html.hide( ) );
 }
-	
+
 function show(arr) {
-	arr.forEach( (e) => e.html.show( ) );	
+	arr.forEach( (e) => e.html.show( ) );
 }
-	
+
 
 function director( ) {
-	base = JSON.parse( decodeURIComponent(base) ); /* определение глобальной переменной base зашито в jsonp */
-	
+	base = JSON.parse( decodeURIComponent(base) ); /* Ð¾Ð¿ÑÐµÐ´ÐµÐ»ÐµÐ½Ð¸Ðµ Ð³Ð»Ð¾Ð±Ð°Ð»ÑÐ½Ð¾Ð¹ Ð¿ÐµÑÐµÐ¼ÐµÐ½Ð½Ð¾Ð¹ base Ð·Ð°ÑÐ¸ÑÐ¾ Ð² jsonp */
+
 	base.desc.forEach( ( e, i ) => {
 		document.querySelector(".cardContainer").appendChild( (new SACard(e, i, base)).html );
 	} );
-	
+
 	document.querySelector("#nameSearch").addEventListener("keyup", filterByName, false);
-	
+
 }
 
 
