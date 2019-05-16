@@ -211,7 +211,7 @@ section > hr {
 	background-color: 			#ddd;
 	height:						1px;
 	position:					relative;
-	top:						14px;
+	top:						15px;
 }
 .tabCaption > input[type='radio'] {
 	display: 					none;
@@ -302,7 +302,7 @@ input[type='radio']:checked+label {
 	height; 					0px;
 	background-color: 			rgba(130, 130, 130,0);
 	border-bottom:				3px solid #bbb;
-	top:						16px;
+	top:						17px;
 }
 
 .companyClicker > .tabCaption > .description > * {
