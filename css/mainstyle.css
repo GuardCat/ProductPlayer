@@ -29,6 +29,8 @@ input[type='search'] {
 	color:				#FFC000;
 	cursor: 			pointer;
 	background-color:	rgb(0, 0, 0, 0);
+	display:			inline;
+	vertical-align:  	middle;
 }
 
 h1 {
