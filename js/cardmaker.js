@@ -9,7 +9,7 @@ class SACard {
 		function makeCategoryIcons( ) {
 			let result = "", categories = entry.category.source;
 			base.category.forEach(	function(category) {
-				result += `<div ${categories.some( el => category.name === el ) ? `class="enabled"` : "" }>	<img class="icon" src="${ category.url }">	<div class="mask"></div>	</div>`;
+				result += `<div ${categories.some( el => category.name === el ) ? `class="enabled"` : "" } title="${ category.name }">	<img class="icon" src="${ category.url }" >	<div class="mask"></div>	</div>`;
 			});
 			
 			return result;
@@ -18,7 +18,7 @@ class SACard {
 		function makeSegmentIcons( ) {
 			let result = "";
 			base.segment.forEach(	(segment) => {
-				result += `<div ${ entry.segment.value.some( (e) => e.name === segment.name ) ? `class="enabled"` : "" }>	                <img class="icon" src="${ segment.url }">			<div class="mask"></div>	</div>`;
+				result += `<div ${ entry.segment.value.some( (e) => e.name === segment.name ) ? `class="enabled"` : "" } title="${ segment.name }">	                <img class="icon" src="${ segment.url }">			<div class="mask"></div>	</div>`;
 			});
 			
 			return result;
@@ -74,7 +74,7 @@ class SACard {
 					<div class="description tabpad-${ i }">
 						<img src="${ e.logo }" class="companyimg">
 						<a class="policy ${ polices ? "" : "hidden" }" href="${ polices ? polices[i] : "" }">ПОЛИС</a>
-						<a class="policy ${ e.instructionurl ? "" : "hidden" }" href="${ e.instructionurl }">ИНСТРУКЦИЯ</a>
+						<a class="policy ${ e.instructionurl ? "" : "hidden" } ${entry.type === "SA" ? "" : "hidden"}" href="${ e.instructionurl }">ИНСТРУКЦИЯ</a>
 						<a class="policy ${entry.type === "SA" ? "" : "hidden"}" href="${ e.war }">ОФОРМЛЕНИЕ</a>
 					</div>	
 				`;
