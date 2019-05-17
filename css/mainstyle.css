@@ -3,13 +3,13 @@ body {
 }
 
 header {
-    background-color:	#999;
+	background-color:	#999;
 	color:				#f0f0f0;
 	font-size:			18px;
 }
 
 nav {
-    background-color:	rgb(0,0,0,0);
+	background-color:	rgb(0,0,0,0);
 }
 
 input[type='search'] {
@@ -35,7 +35,7 @@ input[type='search'] {
 }
 
 h1 {
-    padding:			0px;
+	padding:			0px;
 }
 
 .cardContainer {
