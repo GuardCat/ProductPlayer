@@ -20,6 +20,7 @@ input[type='search'] {
 	padding:			5px;
 	border-radius:		5px;
 	margin-left:		5px;
+	outline:			none;
 }
 
 .clearer {
@@ -38,12 +39,14 @@ h1 {
 }
 
 .cardContainer {
-    background-color:	#F1F1F1;
-    display:			flex;
-    align-items:		center;
-    flex-wrap:			wrap;
-    justify-content:	flex-start;
+	background-color:	#F1F1F1;
+	display:			flex;
+	align-items:		center;
+	flex-wrap:			wrap;
+	justify-content:	flex-start;
 	max-width:			1290px;
+	position:			relative;
+	top:				25px;
 }
 
 .hidden {
@@ -66,6 +69,7 @@ h1 {
 	cursor: 			pointer;
 	background-color:	white;
 	margin-left:		5px;
+  	margin-top:			5px;
 	font-size:			16px;
 	line-height:		27px;
 }
@@ -73,14 +77,15 @@ h1 {
 .searchPanel {
 	position:			fixed;
 	background-color:	#F1F1F1;
-	width:				100%;
+	width:				315px;
 	max-width:			625px;
+  	min-width:			295px;
 	border-radius:		5px;
 	z-index:			10;
     box-shadow:			0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 	top:				10px;
 	vertical-align: 	middle;
 	padding-left:		5px;
-	padding-top:		10px;
-	padding-bottom:		10px;
+	padding-top:		5px;
+	padding-bottom:		5px;
 }
