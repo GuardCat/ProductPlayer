@@ -6,17 +6,20 @@
 	<link rel="stylesheet" id="cardstyle"></link>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
+
 </head>
 
 <body>
 
-<h1>Комиссионные продукты POS</h1>
+<h2>Комиссионные продукты POS</h2>
 
-
-<div class="cardContainer">
 	<input type="search" id="nameSearch">
-	<div class="clearer" onclick="document.querySelector('#nameSearch').value='';filterByName( );">&times;</div>
-	<div class="breaker"></div>
+	<div class="clearer" >&times;</div>
+
+
+	
+<div class="cardContainer">
+	
 </div>
 
 <script type="text/javascript" id="observer"	></script>
@@ -64,14 +67,24 @@ function show(arr) {
 	arr.forEach( (e) => e.html.show( ) );
 }
 
+function clearAndFilter( ) {
+	document.querySelector('#nameSearch').value='';
+	filterByName( );
+}
 
 function director( ) {
-	base = JSON.parse( decodeURIComponent(base) ); /* Ð¾Ð¿ÑÐµÐ´ÐµÐ»ÐµÐ½Ð¸Ðµ Ð³Ð»Ð¾Ð±Ð°Ð»ÑÐ½Ð¾Ð¹ Ð¿ÐµÑÐµÐ¼ÐµÐ½Ð½Ð¾Ð¹ base Ð·Ð°ÑÐ¸ÑÐ¾ Ð² jsonp */
+	base = JSON.parse( decodeURIComponent(base) );
 
+	/* Actions */
+	
 	base.desc.forEach( ( e, i ) => {
 		document.querySelector(".cardContainer").appendChild( (new SACard(e, i, base)).html );
 	} );
 
+	filterByName( );
+	
+	/* Events */
+	document.querySelector(".clearer").addEventListener("click", clearAndFilter( ));
 	document.querySelector("#nameSearch").addEventListener("keyup", filterByName, false);
 
 }

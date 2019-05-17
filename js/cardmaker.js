@@ -7,9 +7,9 @@ class SACard {
 		let source;
 		
 		function makeCategoryIcons( ) {
-			let result = "";
+			let result = "", categories = entry.category.source;
 			base.category.forEach(	function(category) {
-				result += `<div ${category.name === entry.category.source ? `class="enabled"` : "" }>	<img class="icon" src="${ category.url }">	<div class="mask"></div>	</div>`;
+				result += `<div ${categories.some( el => category.name === el ) ? `class="enabled"` : "" }>	<img class="icon" src="${ category.url }">	<div class="mask"></div>	</div>`;
 			});
 			
 			return result;
@@ -33,10 +33,11 @@ class SACard {
 		}
 		
 		function makeDescriptionTabs( ) {
+			if (!entry.price.split) entry.price = "" + entry.price;
 			let result = "", prices = entry.price.split(";"), names = entry.priceName.split(";");
 			
-			prices.forEach( (e, i) => {
-				result += `<input id="descinput${ i }-${ cardNumber }" type="radio" name="desc-${ cardNumber }" class="tabpad-${ i }" ${ i === 1 ? "checked" : "" }> <label for="descinput${ i }-${ cardNumber }">${ names[i] }</label>`;
+			prices.forEach( (e, i, arr) => {
+				result += `<input id="descinput${ i }-${ cardNumber }" type="radio" name="desc-${ cardNumber }" class="tabpad-${ i }" ${ (i === 1 || arr.length === 1) ? "checked" : "" }> <label for="descinput${ i }-${ cardNumber }">${ names[i] }</label>`;
 			} );
 			
 			return result;
@@ -74,7 +75,7 @@ class SACard {
 						<img src="${ e.logo }" class="companyimg">
 						<a class="policy ${ polices ? "" : "hidden" }" href="${ polices ? polices[i] : "" }">ПОЛИС</a>
 						<a class="policy ${ e.instructionurl ? "" : "hidden" }" href="${ e.instructionurl }">ИНСТРУКЦИЯ</a>
-						<a class="policy" href="${ e.war }">ОФОРМЛЕНИЕ</a>
+						<a class="policy ${entry.type === "SA" ? "" : "hidden"}" href="${ e.war }">ОФОРМЛЕНИЕ</a>
 					</div>	
 				`;
 			} );
@@ -83,8 +84,8 @@ class SACard {
 		}
 		
 		source = `
-			<div class="cardHeader SA" data-key="header">
-				<div class="type">SA</div>
+			<div class="cardHeader ${entry.type}" data-key="header">
+				<div class="type">${entry.type}</div>
 
 				<div class="categories icons">
 					${ makeCategoryIcons() }
@@ -130,6 +131,7 @@ class SACard {
 		
 		entry.html = this;
 		this.html = document.createElement('article');
+		this.html.className = entry.type;
 		this.html.innerHTML = source;
 		
 	}
