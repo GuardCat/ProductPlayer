@@ -16,10 +16,10 @@ input[type='search'] {
 	height:				30px;
 	font-size: 			15px;
 	border:				2px solid #FFC000;
-    margin:				10px;
 	width:				270px;
 	padding:			5px;
 	border-radius:		5px;
+	margin-left:		5px;
 }
 
 .clearer {
@@ -30,6 +30,7 @@ input[type='search'] {
 	background-color:	rgb(0, 0, 0, 0);
 	display:			inline;
 	vertical-align:  	middle;
+	font-size:			20px;
 }
 
 h1 {
@@ -57,24 +58,29 @@ h1 {
 
 .searchButton {
 	border:				1px solid;
-	padding:			3px;
 	border-radius:		5px;
 	width:				40px;
 	text-align:			center;
+	vertical-align: 	middle;
 	display:			inline-block;
-	margin-left:		10px;
 	cursor: 			pointer;
 	background-color:	white;
-	margin-bottom:		5px;
+	margin-left:		5px;
+	font-size:			16px;
+	line-height:		27px;
 }
 
 .searchPanel {
 	position:			fixed;
 	background-color:	#F1F1F1;
 	width:				100%;
-	max-width:			630px;
+	max-width:			625px;
 	border-radius:		5px;
 	z-index:			10;
     box-shadow:			0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 	top:				10px;
+	vertical-align: 	middle;
+	padding-left:		5px;
+	padding-top:		10px;
+	padding-bottom:		10px;
 }
