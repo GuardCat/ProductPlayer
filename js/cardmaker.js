@@ -37,7 +37,7 @@ class SACard {
 			let result = "", prices = entry.price.split(";"), names = entry.priceName.split(";");
 			
 			prices.forEach( (e, i, arr) => {
-				result += `<input id="descinput${ i }-${ cardNumber }" type="radio" name="desc-${ cardNumber }" class="tabpad-${ i }" ${ (i === 1 || arr.length === 1) ? "checked" : "" }> <label for="descinput${ i }-${ cardNumber }">${ names[i] }</label>`;
+				result += `<input id="descinput${ i }-${ cardNumber }" type="radio" name="desc-${ cardNumber }" class="tabpad-${ i }" ${ (i === 1 || arr.length === 1) ? "checked" : "" }> <label ${arr.length > 1 ? "" : 'class="leftit"'} for="descinput${ i }-${ cardNumber }">${ names[i] }</label>`;
 			} );
 			
 			return result;
