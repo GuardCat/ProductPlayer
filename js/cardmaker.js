@@ -75,7 +75,7 @@ class SACard {
 						<img src="${ e.logo }" class="companyimg">
 						<a class="policy ${ polices ? "" : "hidden" }" href="${ polices ? polices[i] : "" }">ПОЛИС</a>
 						<a class="policy ${ e.instructionurl ? "" : "hidden" }" href="${ e.instructionurl }">ИНСТРУКЦИЯ</a>
-						<a class="policy" href="${ e.war }">ОФОРМЛЕНИЕ</a>
+						<a class="policy ${entry.type === "SA" ? "" : "hidden"}" href="${ e.war }">ОФОРМЛЕНИЕ</a>
 					</div>	
 				`;
 			} );

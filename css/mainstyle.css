@@ -46,5 +46,13 @@ h1 {
 }
 
 .hidden {
-	display:			none;
+	display:			none !important;
+}
+
+.searchButton {
+	border:				1px solid black;
+	padding:			3px;
+	border-radius:		5px;
+	width:				140px;
+	display:block;
 }
