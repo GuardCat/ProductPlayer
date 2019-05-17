@@ -83,8 +83,8 @@ class SACard {
 		}
 		
 		source = `
-			<div class="cardHeader SA" data-key="header">
-				<div class="type">SA</div>
+			<div class="cardHeader ${entry.type}" data-key="header">
+				<div class="type">${entry.type}</div>
 
 				<div class="categories icons">
 					${ makeCategoryIcons() }
@@ -130,6 +130,7 @@ class SACard {
 		
 		entry.html = this;
 		this.html = document.createElement('article');
+		this.html.className = entry.type;
 		this.html.innerHTML = source;
 		
 	}

@@ -26,9 +26,13 @@ article {
     border-top-right-radius:	5px;
 	height:						40px
 }
-.SA {
+.cardHeader.SA {
     background-color:			#FFC000;
 }
+.cardHeader.BOX {
+	background-color:			#008585;
+}
+
 .type {
 	font-size:					22px;
 }
@@ -256,8 +260,12 @@ input[type='radio']:checked+label {
 	height: 					20px;
 }
 
-.descClicker > .tabCaption > input[type='radio']:checked+label {
-	border-bottom:				3px solid rgba(255, 192, 0,1);
+article.SA > .descClicker > .tabCaption > input[type='radio']:checked+label {
+	border-bottom:				3px solid #FFC000;
+}
+
+article.BOX > .descClicker > .tabCaption > input[type='radio']:checked+label {
+	border-bottom:				3px solid #008585;
 }
 
 .descClicker > .tabCaption > .description {
@@ -277,7 +285,6 @@ input[type='radio']:checked+label {
 
 .companyClicker > .tabCaption > input[type='radio']:checked+label {
 	border-bottom:				3px solid rgba(130, 130, 130,1);
-	z-index: 					1;
 }
 
 
