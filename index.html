@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <script type="text/javascript">
 
 	function loadIt( ) { 
@@ -6,4 +7,143 @@
 	}
 	
 	window.addEventListener('load', loadIt, false);
+=======
+<!doctype HTML>
+<html>
+<head>
+	<title>Комиссионные продукты POS</title>
+	<link rel="stylesheet" id="mainstyle"></link>
+	<link rel="stylesheet" id="cardstyle"></link>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+
+</head>
+
+<body>
+
+<h2>Комиссионные продукты POS</h2>
+<div class="searchPanel">
+	<input type="search" id="nameSearch" placeholder="поиск по имени и описанию">
+	<div class="clearer" >&times;</div>
+
+	<div class="searchButton" data-searchbywhat="type" data-searchtext="SA">SA</div><div class="searchButton" data-searchbywhat="type" data-searchtext="BOX">BOX</div>
+</div>
+	
+<div class="cardContainer">
+	
+</div>
+
+<script type="text/javascript" id="observer"	></script>
+<script type="text/javascript" id="base"		></script>
+<script type="text/javascript" id="cardmaker"	></script>
+<script type="text/javascript" id="loadlist" src="https://webtutor.otpbank.ru/download_file.html?file_id=6688621698217240862"></script>
+
+
+<script type="text/javascript">
+
+const
+	data = {
+		forLoad: {
+			observer:	{attribute:	"src",	value:	"https://webtutor.otpbank.ru/download_file.html?file_id=6688620357795999002"},
+			cardmaker:	{attribute: "src",	value:	"https://webtutor.otpbank.ru/download_file.html?file_id=6688619456793097366"},
+			base:		{attribute:	"src",	value:	"https://webtutor.otpbank.ru/download_file.html?file_id=6688620003131661277"},
+			mainstyle:	{attribute:	"href",	value:	"https://webtutor.otpbank.ru/download_file.html?file_id=6688622910443958105"},
+			cardstyle:	{attribute:	"href",	value:	"https://webtutor.otpbank.ru/download_file.html?file_id=6690507111928824176"}
+		}
+	},
+
+	filterByText = ( ( ) => {
+		let oldValue
+		return ( ) => {
+			let input = document.querySelector("#nameSearch"), filtered;
+			if (oldValue === input.value) return false;
+			//if (input.value.length < 3) return false;
+
+			filtered = base.desc.filter( (e) => {
+				let r = new RegExp( ("" + input.value).toLowerCase( ) );
+				return !( r.test(e.name.toLowerCase( )) || r.test(e.description.toLowerCase( )) ) ;
+			} );
+
+			show(base.desc);
+			hide(filtered);
+		}
+	} ) ( ),
+	
+	searchTemplate = {}
+;
+
+function hide(arr) {
+	arr.forEach( (e) => e.html.hide( ) );
+}
+
+function show(arr) {
+	arr.forEach( (e) => e.html.show( ) );
+}
+
+function clearAndFilter( ) {
+	document.querySelector('#nameSearch').value='';
+	show(base.desc);
+	
+}
+
+function searchClick(e) {
+	if(e.target.classList.contains("searchButton")) {
+		e.target.classList.toggle("disabled");
+		filterBy(e.target.getAttribute("data-searchby"), e.target.innerHTML, e.target.classList.contains("disabled"))
+	}
+}
+
+function createSearchTemplate( ) {
+	let buttons = document.querySelectorAll(".searchButton");
+
+	[].forEach.call(buttons, (el) => {
+		if (!searchTemplate[el.getAttribute("data-searchbywhat")]) searchTemplate[el.getAttribute("data-searchbywhat")] = {};
+		
+		searchTemplate[el.getAttribute("data-searchbywhat")][ el.getAttribute("data-searchtext") ] = el.classList.contains("disabled");
+	} );
+	
+}
+	
+	
+function filterBy() {
+	createSearchTemplate( );
+	let filtered = base.desc.filter( (el) => {
+		
+		for(let i in searchTemplate) {
+			for(let ii in searchTemplate[i]) {
+				if (searchTemplate[i][ii] && el[i] === ii) return true;
+			}
+		}
+		
+		return false;
+	} );
+
+	show(base.desc);
+	hide(filtered);
+}
+	
+function director( ) {
+	
+	base = JSON.parse( decodeURIComponent(base) );
+
+	/* Actions */
+	
+	base.desc.forEach( ( e, i ) => {
+		document.querySelector(".cardContainer").appendChild( (new SACard(e, i, base)).html );
+	} );
+
+	filterByText( );
+	
+	
+	/* Events */
+	document.querySelector(".clearer").addEventListener("click", clearAndFilter, false);
+	document.querySelector(".searchPanel").addEventListener("click", searchClick, false);
+	document.querySelector("#nameSearch").addEventListener("keyup", filterByText, false);
+}
+
+
+new LoadList(data.forLoad, director);
+
+
+>>>>>>> wtt
 </script>
