@@ -97,15 +97,19 @@ function createSearchTemplate( ) {
 	
 function filterBy() {
 	createSearchTemplate( );
+	let input = document.querySelector("#nameSearch");
 	let filtered = base.desc.filter( (el) => {
+						let r = new RegExp( ("" + input.value).toLowerCase( ) );
 		
 		for(let i in searchTemplate) {
 			for(let ii in searchTemplate[i]) {
-				if (searchTemplate[i][ii] && el[i] === ii) return true;
+				if (searchTemplate[i][ii] && el[i] === ii) {
+					if (!input.value) return true;
+					return !( r.test(el.name.toLowerCase( )) || r.test(el.description.toLowerCase( )) ) ;
+				}
 			}
 		}
-		
-		return false;
+		return false
 	} );
 
 	show(base.desc);
@@ -128,7 +132,7 @@ function director( ) {
 	/* Events */
 	document.querySelector(".clearer").addEventListener("click", clearAndFilter, false);
 	document.querySelector(".searchPanel").addEventListener("click", searchClick, false);
-	document.querySelector("#nameSearch").addEventListener("keyup", filterByText, false);
+	document.querySelector("#nameSearch").addEventListener("keyup", filterBy, false);
 }
 
 
