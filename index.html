@@ -16,7 +16,8 @@
 	<input type="search" id="nameSearch" placeholder="поиск по имени и описанию">
 	<div class="clearer" >&times;</div>
 
-	<div class="searchButton" data-searchbywhat="type" data-searchtext="SA">SA</div><div class="searchButton" data-searchbywhat="type" data-searchtext="BOX">BOX</div>
+	<div class="searchButton" data-searchkey="type" data-searchval="SA">SA</div>
+	<div class="searchButton" data-searchkey="type" data-searchval="BOX">BOX</div>
 </div>
 	
 <div class="cardContainer">
@@ -26,6 +27,7 @@
 <script type="text/javascript" id="observer"	></script>
 <script type="text/javascript" id="base"		></script>
 <script type="text/javascript" id="cardmaker"	></script>
+<script type="text/javascript" id="filters"		></script>
 <script type="text/javascript" id="loadlist" src="https://guardcat.github.io/GCLibraries/loadlistclass.js"></script>
 
 
@@ -36,6 +38,7 @@ const
 		forLoad: {
 			observer:	{attribute:	"src",	value:	"js/observer.js"},
 			cardmaker:	{attribute: "src",	value:	"js/cardmaker.js"},
+			filters:	{attribute:	"src",	value:	"js/filters.js"},	
 			base:		{attribute:	"src",	value:	"base.jsonp"},
 			mainstyle:	{attribute:	"href",	value:	"css/mainstyle.css"},
 			cardstyle:	{attribute:	"href",	value:	"css/card.css"}
