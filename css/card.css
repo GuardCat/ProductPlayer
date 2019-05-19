@@ -26,9 +26,13 @@ article {
     border-top-right-radius:	5px;
 	height:						40px
 }
-.SA {
+.cardHeader.SA {
     background-color:			#FFC000;
 }
+.cardHeader.BOX {
+	background-color:			#008585;
+}
+
 .type {
 	font-size:					22px;
 }
@@ -37,7 +41,10 @@ article {
 /**********************************
  Иконки и маски для них
  **********************************/
-.icons {	display:				flex;}
+.icons {
+	display:					flex;
+}
+
 /* контейнеры с иконками и масками */
 .icons > div {
 	width:						25px;
@@ -53,13 +60,13 @@ article {
 	width:						100%;
 	height:						100%;
 	background-color:			white;
-	border-radius:				30px;
+	border-radius:				50px;
 	opacity:					0.8;
 	position:					relative;
 	top:						-100%;
 }
 .icon {
-	width:						100%;
+	width:						110%;
 	position:					relative;
 	left:						0px;
 	top:						-100%;
@@ -211,7 +218,7 @@ section > hr {
 	background-color: 			#ddd;
 	height:						1px;
 	position:					relative;
-	top:						14px;
+	top:						15px;
 }
 .tabCaption > input[type='radio'] {
 	display: 					none;
@@ -256,8 +263,12 @@ input[type='radio']:checked+label {
 	height: 					20px;
 }
 
-.descClicker > .tabCaption > input[type='radio']:checked+label {
-	border-bottom:				3px solid rgba(255, 192, 0,1);
+article.SA > .descClicker > .tabCaption > input[type='radio']:checked+label {
+	border-bottom:				3px solid #FFC000;
+}
+
+article.BOX > .descClicker > .tabCaption > input[type='radio']:checked+label {
+	border-bottom:				3px solid #008585;
 }
 
 .descClicker > .tabCaption > .description {
@@ -277,7 +288,6 @@ input[type='radio']:checked+label {
 
 .companyClicker > .tabCaption > input[type='radio']:checked+label {
 	border-bottom:				3px solid rgba(130, 130, 130,1);
-	z-index: 					1;
 }
 
 
@@ -302,21 +312,27 @@ input[type='radio']:checked+label {
 	height; 					0px;
 	background-color: 			rgba(130, 130, 130,0);
 	border-bottom:				3px solid #bbb;
-	top:						16px;
+	top:						17px;
 }
+
+.companyClicker > .tabCaption > .description > * {
+	top:						-5px;
+	position:					relative;	
+	vertical-align: 			middle;
+	display: 					inline-block;
+}
+
 
 .companyimg {
 	width:						22px;
 	height:						22px;
-	position:					relative;
-	top:						-5px;	
+
 }
 .companyClicker > .tabCaption > .description > a {
+
 	position:					relative;
-	top:						-12px;
 	border:						0;
-	padding-top:				6px;
-	padding-bottom:				6px;
+	padding-top:				7px;
 	padding-left:				10px;
 	padding-right:				10px;
 	border-radius:				30px;
@@ -325,13 +341,14 @@ input[type='radio']:checked+label {
 	color:						black;
 	font-size:					9px;
 	margin-left:				6px;
+	height:						15px;
 }
 
 .companyClicker > .tabCaption > .description > a[href=''] {
 	display:					false;
 }
 
-.companyClicker > .tabCaption > .leftit {
+.tabCaption > .leftit {
 	text-align:					left;
-	padding-left:				10px;
+	padding-left:				5px;
 }

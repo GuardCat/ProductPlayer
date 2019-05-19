@@ -1,30 +1,39 @@
 <!doctype HTML>
 <html>
 <head>
+	<title>Комиссионные продукты POS</title>
 	<link rel="stylesheet" id="mainstyle"></link>
 	<link rel="stylesheet" id="cardstyle"></link>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
+
 </head>
 
 <body>
 
+<div class="searchPanel">
+	<input type="search" id="textSearch" placeholder="поиск по имени и описанию">
+	<div class="clearer" >&times;</div>
+
+	<div class="searchButton" data-searchkey="type" data-searchval="SA">SA</div>
+	<div class="searchButton" data-searchkey="type" data-searchval="BOX">BOX</div>
+	<span> </span>
+</div>
 	
 <div class="cardContainer">
-	<input type="search" id="nameSearch">
-	<div class="clearer" onclick="document.querySelector('#nameSearch').value='';filterByName( );">✖</div>
-	<div class="breaker"></div>
+	
 </div>
 
 <script type="text/javascript" id="observer"	></script>
 <script type="text/javascript" id="base"		></script>
 <script type="text/javascript" id="cardmaker"	></script>
+<script type="text/javascript" id="filters"		></script>
 <script type="text/javascript" id="loadlist" src="https://webtutor.otpbank.ru/download_file.html?file_id=6688621698217240862"></script>
 
 
 <script type="text/javascript">
 
-const 
+const
 	data = {
 		forLoad: {
 			observer:	{attribute:	"src",	value:	"https://webtutor.otpbank.ru/download_file.html?file_id=6688620357795999002"},
@@ -32,45 +41,58 @@ const
 			base:		{attribute:	"src",	value:	"https://webtutor.otpbank.ru/download_file.html?file_id=6688620003131661277"},
 			mainstyle:	{attribute:	"href",	value:	"https://webtutor.otpbank.ru/download_file.html?file_id=6688622910443958105"},
 			cardstyle:	{attribute:	"href",	value:	"https://webtutor.otpbank.ru/download_file.html?file_id=6690507111928824176"}
+			filters:	{attribute:	"src",	value:	"js/filters.js"},
 		}
-	},
-	
-	filterByName = ( ( ) => {
-		let oldValue
-		return ( ) => {
-			let input = document.querySelector("#nameSearch"), filtered;
-			if (oldValue === input.value) return false;
-			//if (input.value.length < 3) return false;
-
-			filtered = base.desc.filter( (e) => {
-				let r = new RegExp( ("" + input.value).toLowerCase( ) );
-				return !r.test(e.name.toLowerCase( ));
-			} );
-
-			show(base.desc);
-			hide(filtered);
-		}
-	} ) ( )
+	}
 ;
-	
-function hide(arr) {
-	arr.forEach( (e) => e.html.hide( ) );
-}
-	
-function show(arr) {
-	arr.forEach( (e) => e.html.show( ) );	
-}
-	
+
 
 function director( ) {
-	base = JSON.parse( decodeURIComponent(base) ); /* определение глобальной переменной base зашито в jsonp */
+	const
+		buttons 	= document.querySelectorAll(".searchButton"),
+		clearer 	= document.querySelector(".clearer"),
+		input		= document.querySelector("#textSearch"),
+		panel		= document.querySelector(".searchPanel"),
+		container 	= document.querySelector(".cardContainer"),
+		count		= panel.querySelector("span")
+	;
 	
+	function searchPanelClicked(e) {
+		if(e.target.classList.contains("searchButton")) {
+			e.target.classList.toggle("disabled");
+			complexFilter(base.desc, input, buttons);
+		}
+	}
+	
+	function letsCount( ) {
+		count.innerHTML = "Продуктов: " + base.desc.reduce( (res, el) => {
+			return el.html.html.classList.contains("hidden") ? res : res + 1;
+		}, 0 );
+	}
+	
+	base = JSON.parse( decodeURIComponent(base) ); /* переменная декларирована в jsonp */
+	
+	/* Actions */
+	
+	/* Actions: генерируем карточки */
 	base.desc.forEach( ( e, i ) => {
-		document.querySelector(".cardContainer").appendChild( (new SACard(e, i, base)).html );
+		container.appendChild( (new SACard(e, i, base)).html );
 	} );
+
+	/* Actions: считаем карточки */
+	letsCount( );
 	
-	document.querySelector("#nameSearch").addEventListener("keyup", filterByName, false);
 	
+	
+	/* Events */
+	clearer.addEventListener("click", clearFilters.bind(false, input, buttons, base.desc), false);
+
+	panel.addEventListener("click", searchPanelClicked, false);
+	panel.addEventListener("click", letsCount, false);
+	panel.addEventListener("keyup", letsCount, false);
+	
+	input.addEventListener("keyup", complexFilter.bind(false, base.desc, input, buttons), false);
+
 }
 
 
