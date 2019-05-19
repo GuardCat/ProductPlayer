@@ -34,9 +34,6 @@ input[type='search'] {
 	font-size:			20px;
 }
 
-h1 {
-	padding:			0px;
-}
 
 .cardContainer {
 	background-color:	#F1F1F1;
@@ -46,7 +43,7 @@ h1 {
 	justify-content:	flex-start;
 	max-width:			1290px;
 	position:			relative;
-	top:				25px;
+	top:				90px;
 }
 
 .hidden {
