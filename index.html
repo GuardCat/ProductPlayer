@@ -13,7 +13,7 @@
 
 <h2>Комиссионные продукты POS</h2>
 <div class="searchPanel">
-	<input type="search" id="nameSearch" placeholder="поиск по имени и описанию">
+	<input type="search" id="textSearch" placeholder="поиск по имени и описанию">
 	<div class="clearer" >&times;</div>
 
 	<div class="searchButton" data-searchkey="type" data-searchval="SA">SA</div>
@@ -43,99 +43,42 @@ const
 			mainstyle:	{attribute:	"href",	value:	"css/mainstyle.css"},
 			cardstyle:	{attribute:	"href",	value:	"css/card.css"}
 		}
-	},
-
-	filterByText = ( ( ) => {
-		let oldValue
-		return ( ) => {
-			let input = document.querySelector("#nameSearch"), filtered;
-			if (oldValue === input.value) return false;
-			//if (input.value.length < 3) return false;
-
-			filtered = base.desc.filter( (e) => {
-				let r = new RegExp( ("" + input.value).toLowerCase( ) );
-				return !( r.test(e.name.toLowerCase( )) || r.test(e.description.toLowerCase( )) ) ;
-			} );
-
-			show(base.desc);
-			hide(filtered);
-		}
-	} ) ( ),
-	
-	searchTemplate = {}
+	}
 ;
 
-function hide(arr) {
-	arr.forEach( (e) => e.html.hide( ) );
-}
 
-function show(arr) {
-	arr.forEach( (e) => e.html.show( ) );
-}
-
-function clearAndFilter( ) {
-	document.querySelector('#nameSearch').value='';
-	show(base.desc);
-	
-}
-
-function searchClick(e) {
-	if(e.target.classList.contains("searchButton")) {
-		e.target.classList.toggle("disabled");
-		filterBy(e.target.getAttribute("data-searchby"), e.target.innerHTML, e.target.classList.contains("disabled"))
-	}
-}
-
-function createSearchTemplate( ) {
-	let buttons = document.querySelectorAll(".searchButton");
-
-	[].forEach.call(buttons, (el) => {
-		if (!searchTemplate[el.getAttribute("data-searchbywhat")]) searchTemplate[el.getAttribute("data-searchbywhat")] = {};
-		
-		searchTemplate[el.getAttribute("data-searchbywhat")][ el.getAttribute("data-searchtext") ] = el.classList.contains("disabled");
-	} );
-	
-}
-	
-	
-function filterBy() {
-	createSearchTemplate( );
-	let input = document.querySelector("#nameSearch");
-	let filtered = base.desc.filter( (el) => {
-						let r = new RegExp( ("" + input.value).toLowerCase( ) );
-		
-		for(let i in searchTemplate) {
-			for(let ii in searchTemplate[i]) {
-				if (searchTemplate[i][ii] && el[i] === ii) {
-					if (!input.value) return true;
-					return !( r.test(el.name.toLowerCase( )) || r.test(el.description.toLowerCase( )) ) ;
-				}
-			}
-		}
-		return false
-	} );
-
-	show(base.desc);
-	hide(filtered);
-}
-	
 function director( ) {
+	const
+		buttons 	= document.querySelectorAll(".searchButton"),
+		clearer 	= document.querySelector(".clearer"),
+		input		= document.querySelector("#textSearch"),
+		panel		= document.querySelector(".searchPanel"),
+		container 	= document.querySelector(".cardContainer")
+	;
 	
-	base = JSON.parse( decodeURIComponent(base) );
-
+	function searchPanelClicked(e) {
+		if(e.target.classList.contains("searchButton")) {
+			e.target.classList.toggle("disabled");
+			complexFilter(base.desc, input, buttons);
+		}
+	}
+	
+	base = JSON.parse( decodeURIComponent(base) ); /* переменная декларирована в jsonp */
+	
 	/* Actions */
 	
+	/* Генерируем карточки */
 	base.desc.forEach( ( e, i ) => {
-		document.querySelector(".cardContainer").appendChild( (new SACard(e, i, base)).html );
+		container.appendChild( (new SACard(e, i, base)).html );
 	} );
 
-	filterByText( );
+	
 	
 	
 	/* Events */
-	document.querySelector(".clearer").addEventListener("click", clearAndFilter, false);
-	document.querySelector(".searchPanel").addEventListener("click", searchClick, false);
-	document.querySelector("#nameSearch").addEventListener("keyup", filterBy, false);
+	clearer.addEventListener("click", clearFilters.bind(false, input, buttons, base.desc), false);
+	panel.addEventListener("click", searchPanelClicked, false);
+	input.addEventListener("keyup", complexFilter.bind(false, base.desc, input, buttons), false);
 }
 
 
