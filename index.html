@@ -18,6 +18,7 @@
 
 	<div class="searchButton" data-searchkey="type" data-searchval="SA">SA</div>
 	<div class="searchButton" data-searchkey="type" data-searchval="BOX">BOX</div>
+	<span> </span>
 </div>
 	
 <div class="cardContainer">
@@ -53,7 +54,8 @@ function director( ) {
 		clearer 	= document.querySelector(".clearer"),
 		input		= document.querySelector("#textSearch"),
 		panel		= document.querySelector(".searchPanel"),
-		container 	= document.querySelector(".cardContainer")
+		container 	= document.querySelector(".cardContainer"),
+		count		= panel.querySelector("span")
 	;
 	
 	function searchPanelClicked(e) {
@@ -63,22 +65,35 @@ function director( ) {
 		}
 	}
 	
+	function letsCount( ) {
+		count.innerHTML = "Продуктов: " + base.desc.reduce( (res, el) => {
+			return el.html.html.classList.contains("hidden") ? res : res + 1;
+		}, 0 );
+	}
+	
 	base = JSON.parse( decodeURIComponent(base) ); /* переменная декларирована в jsonp */
 	
 	/* Actions */
 	
-	/* Генерируем карточки */
+	/* Actions: генерируем карточки */
 	base.desc.forEach( ( e, i ) => {
 		container.appendChild( (new SACard(e, i, base)).html );
 	} );
 
+	/* Actions: считаем карточки */
+	letsCount( );
 	
 	
 	
 	/* Events */
 	clearer.addEventListener("click", clearFilters.bind(false, input, buttons, base.desc), false);
+
 	panel.addEventListener("click", searchPanelClicked, false);
+	panel.addEventListener("click", letsCount, false);
+	panel.addEventListener("keyup", letsCount, false);
+	
 	input.addEventListener("keyup", complexFilter.bind(false, base.desc, input, buttons), false);
+
 }
 
 

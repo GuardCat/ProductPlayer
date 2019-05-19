@@ -90,3 +90,10 @@ h1 {
 	padding-top:		5px;
 	padding-bottom:		5px;
 }
+
+span {
+	vertical-align: 	bottom;
+	display:			inline-block;
+	width:				190px;
+	text-align: 		right;
+}
