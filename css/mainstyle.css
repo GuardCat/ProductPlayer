@@ -3,23 +3,24 @@ body {
 }
 
 header {
-    background-color:	#999;
+	background-color:	#999;
 	color:				#f0f0f0;
 	font-size:			18px;
 }
 
 nav {
-    background-color:	rgb(0,0,0,0);
+	background-color:	rgb(0,0,0,0);
 }
 
 input[type='search'] {
 	height:				30px;
 	font-size: 			15px;
 	border:				2px solid #FFC000;
-    margin:				10px;
 	width:				270px;
 	padding:			5px;
 	border-radius:		5px;
+	margin-left:		5px;
+	outline:			none;
 }
 
 .clearer {
@@ -30,19 +31,19 @@ input[type='search'] {
 	background-color:	rgb(0, 0, 0, 0);
 	display:			inline;
 	vertical-align:  	middle;
+	font-size:			20px;
 }
 
-h1 {
-    padding:			0px;
-}
 
 .cardContainer {
-    background-color:	#F1F1F1;
-    display:			flex;
-    align-items:		center;
-    flex-wrap:			wrap;
-    justify-content:	flex-start;
+	background-color:	#F1F1F1;
+	display:			flex;
+	align-items:		center;
+	flex-wrap:			wrap;
+	justify-content:	flex-start;
 	max-width:			1290px;
+	position:			relative;
+	top:				90px;
 }
 
 .hidden {
@@ -57,24 +58,37 @@ h1 {
 
 .searchButton {
 	border:				1px solid;
-	padding:			3px;
 	border-radius:		5px;
 	width:				40px;
 	text-align:			center;
+	vertical-align: 	middle;
 	display:			inline-block;
-	margin-left:		10px;
 	cursor: 			pointer;
 	background-color:	white;
-	margin-bottom:		5px;
+	margin-left:		5px;
+  	margin-top:			5px;
+	font-size:			16px;
+	line-height:		30px;
+	height:				27px;
 }
 
 .searchPanel {
 	position:			fixed;
 	background-color:	#F1F1F1;
-	width:				100%;
-	max-width:			630px;
+	width:				315px;
 	border-radius:		5px;
 	z-index:			10;
     box-shadow:			0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 	top:				10px;
+	vertical-align: 	middle;
+	padding-left:		5px;
+	padding-top:		5px;
+	padding-bottom:		5px;
+}
+
+span {
+	vertical-align: 	bottom;
+	display:			inline-block;
+	width:				190px;
+	text-align: 		right;
 }
