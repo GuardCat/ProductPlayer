@@ -75,7 +75,7 @@ class SACard {
 				result += `
 					<div class="description tabpad-${ i }">
 						<img src="${ e.logo }" class="companyimg">
-						<a class="policy ${ policy ? "" : "hidden" }" href="${ policy : "" }">ПОЛИС</a>
+						<a class="policy ${ policy ? "" : "hidden" }" href="${ policy ? policy : "" }">ПОЛИС</a>
 						<a class="policy ${ e.instructionurl ? "" : "hidden" } ${entry.type === "SA" ? "" : "hidden"}" href="${ e.instructionurl }">ИНСТРУКЦИЯ</a>
 						<a class="policy ${entry.type === "SA" ? "" : "hidden"}" href="${ e.war }" target="blank">ОФОРМЛЕНИЕ</a>
 					</div>	
