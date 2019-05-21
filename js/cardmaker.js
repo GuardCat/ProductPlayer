@@ -9,7 +9,7 @@ class SACard {
 		function makeCategoryIcons( ) {
 			let result = "", categories = entry.category.source;
 			base.category.forEach(	function(category) {
-				result += `<div ${categories.some( el => category.name === el ) ? `class="enabled"` : "" } title="${ category.name }">	<img class="icon" src="${ category.url }" >	<div class="mask"></div>	</div>`;
+				result += `<div ${categories.some( el => category.name === el ) ? `class="enabled"` : "" } title="${ category.name }">	<img class="icon" src="${ category.url }" >	</div>	`;
 			});
 			
 			return result;
@@ -18,7 +18,7 @@ class SACard {
 		function makeSegmentIcons( ) {
 			let result = "";
 			base.segment.forEach(	(segment) => {
-				result += `<div ${ entry.segment.value.some( (e) => e.name === segment.name ) ? `class="enabled"` : "" } title="${ segment.name }">	                <img class="icon" src="${ segment.url }">			<div class="mask"></div>	</div>`;
+				result += `<div ${ entry.segment.value.some( (e) => e.name === segment.name ) ? `class="enabled"` : "" } title="${ segment.name }">	                <img class="icon" src="${ segment.url }">			</div>	`;
 			});
 			
 			return result;
