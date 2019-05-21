@@ -48,7 +48,7 @@ class SACard {
 			prices.forEach( (e, i) => {
 				result += `
 					<div class="description tabpad-${ i }">
-						<div class="value">Цена: ${ e } р. ${ entry["value" + (i + 1)] }</div>
+						<div class="value">Цена: ${ e } ${ entry["value" + (i + 1)] }</div>
 
 						${ entry.description }
 					</div>
