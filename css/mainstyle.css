@@ -51,25 +51,24 @@ input[type='search'] {
 }
 
 .disabled {
-	background-color:	#F1F1F1;
-	color:				silver;
-	border-color:		silver;
+	opacity:			0.3;
 }
 
 .searchButton {
-	border:				1px solid;
-	border-radius:		5px;
-	width:				40px;
+	border:				1px solid gray;
+	border-radius:		30px;
+	width:				30px;
 	text-align:			center;
 	vertical-align: 	middle;
 	display:			inline-block;
 	cursor: 			pointer;
 	background-color:	white;
-	margin-left:		5px;
-  	margin-top:			5px;
-	font-size:			16px;
+	margin:				5px 0px 0px 5px;
+	font-size:			12px;
 	line-height:		30px;
-	height:				27px;
+	height:				30px;
+	transition-property:opacity;
+	transition-duration:.3s;
 }
 
 .searchPanel {
@@ -89,6 +88,7 @@ input[type='search'] {
 span {
 	vertical-align: 	bottom;
 	display:			inline-block;
-	width:				190px;
+	width:				calc( 100% - 110px );
 	text-align: 		right;
+	font-size:			12px;
 }

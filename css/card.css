@@ -218,7 +218,7 @@ section > hr {
 	background-color: 			#ddd;
 	height:						1px;
 	position:					relative;
-	top:						15px;
+	top:						14px;
 }
 .tabCaption > input[type='radio'] {
 	display: 					none;
@@ -312,7 +312,7 @@ article.BOX > .descClicker > .tabCaption > input[type='radio']:checked+label {
 	height; 					0px;
 	background-color: 			rgba(130, 130, 130,0);
 	border-bottom:				3px solid #bbb;
-	top:						17px;
+	top:						16px;
 }
 
 .companyClicker > .tabCaption > .description > * {

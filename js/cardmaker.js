@@ -48,7 +48,7 @@ class SACard {
 			prices.forEach( (e, i) => {
 				result += `
 					<div class="description tabpad-${ i }">
-						<div class="value">Цена: ${ e } р. ${ entry["value" + (i + 1)] }</div>
+						<div class="value">Цена: ${ e } ${ entry["value" + (i + 1)] }</div>
 
 						${ entry.description }
 					</div>
@@ -70,12 +70,14 @@ class SACard {
 			let result = "", names = entry.company.value, polices = entry.policyurl ? entry.policyurl.split(";") : "" ;
 			
 			entry.company.value.forEach( (e, i) => {
+				let policy = polices ? polices[i] : "";
+				policy = policy !== undefined ? policy : "";
 				result += `
 					<div class="description tabpad-${ i }">
 						<img src="${ e.logo }" class="companyimg">
-						<a class="policy ${ polices ? "" : "hidden" }" href="${ polices ? polices[i] : "" }">ПОЛИС</a>
+						<a class="policy ${ policy ? "" : "hidden" }" href="${ policy ? policy : "" }">ПОЛИС</a>
 						<a class="policy ${ e.instructionurl ? "" : "hidden" } ${entry.type === "SA" ? "" : "hidden"}" href="${ e.instructionurl }">ИНСТРУКЦИЯ</a>
-						<a class="policy ${entry.type === "SA" ? "" : "hidden"}" href="${ e.war }">ОФОРМЛЕНИЕ</a>
+						<a class="policy ${entry.type === "SA" ? "" : "hidden"}" href="${ e.war }" target="blank">ОФОРМЛЕНИЕ</a>
 					</div>	
 				`;
 			} );
