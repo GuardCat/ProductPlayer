@@ -15,7 +15,7 @@ nav {
 input[type='search'] {
 	height:				30px;
 	font-size: 			15px;
-	border:				2px solid #FFC000;
+	border:				1px solid gray;
 	width:				270px;
 	padding:			5px;
 	border-radius:		5px;
