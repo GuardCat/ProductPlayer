@@ -71,8 +71,8 @@ article {
 	height:						100%;
 	top:						0;
 	left:						0;
-	opacity:				0.3;
-  
+	opacity:					0.3;
+
 }
 /* иконка во включенном див теряет прозрачность */
 div.enabled > .icon {
@@ -119,7 +119,7 @@ div.enabled > .icon {
 	top:						-67px;
 	right:						calc(-100% + 100px);
  }
- 
+
  /**********************************
  Список РЦ с картой на фоне
  **********************************/
@@ -127,10 +127,10 @@ div.enabled > .icon {
 	display:					grid;
 	grid-template-columns:		1fr 1fr 1fr;
 	align-items:				center;
-	
+
 	font-size:					14px;
 	text-align:					center;
-	
+
 	position:					relative;
 	left:						10px;
 	top:						-150px;
@@ -159,7 +159,7 @@ section > .tabCaption {
 }
 
 section > .tabCaption > * {
-	flex-grow:					1;	
+	flex-grow:					1;
 }
 
 .breaker {
@@ -266,7 +266,7 @@ article.BOX > .descClicker > .tabCaption > input[type='radio']:checked+label {
 	background-color:			white;
 	line-height:				1em;
 }
- 
+
 /**********************************
  Заголовок переключателя СК
  **********************************/
@@ -307,7 +307,7 @@ article.BOX > .descClicker > .tabCaption > input[type='radio']:checked+label {
 
 .companyClicker > .tabCaption > .description > * {
 	top:						-5px;
-	position:					relative;	
+	position:					relative;
 	vertical-align: 			middle;
 	display: 					inline-block;
 }
