@@ -9,7 +9,7 @@ class SACard {
 		function makeCategoryIcons( ) {
 			let result = "", categories = entry.category.source;
 			base.category.forEach(	function(category) {
-				result += `<div ${categories.some( el => category.name === el ) ? `class="enabled"` : "" } title="${ category.name }">	<img class="icon" src="${ category.url }" >	<div class="mask"></div>	</div>`;
+				result += `<div ${categories.some( el => category.name === el ) ? `class="enabled"` : "" } title="${ category.name }">	<img class="icon" src="${ category.url }" >	</div>	`;
 			});
 			
 			return result;
@@ -18,7 +18,7 @@ class SACard {
 		function makeSegmentIcons( ) {
 			let result = "";
 			base.segment.forEach(	(segment) => {
-				result += `<div ${ entry.segment.value.some( (e) => e.name === segment.name ) ? `class="enabled"` : "" } title="${ segment.name }">	                <img class="icon" src="${ segment.url }">			<div class="mask"></div>	</div>`;
+				result += `<div ${ entry.segment.value.some( (e) => e.name === segment.name ) ? `class="enabled"` : "" } title="${ segment.name }">	                <img class="icon" src="${ segment.url }">			</div>	`;
 			});
 			
 			return result;
@@ -48,7 +48,7 @@ class SACard {
 			prices.forEach( (e, i) => {
 				result += `
 					<div class="description tabpad-${ i }">
-						<div class="value">Цена: ${ e } р. ${ entry["value" + (i + 1)] }</div>
+						<div class="value">Цена: ${ e } ${ entry["value" + (i + 1)] }</div>
 
 						${ entry.description }
 					</div>
@@ -70,12 +70,14 @@ class SACard {
 			let result = "", names = entry.company.value, polices = entry.policyurl ? entry.policyurl.split(";") : "" ;
 			
 			entry.company.value.forEach( (e, i) => {
+				let policy = polices ? polices[i] : "";
+				policy = policy !== undefined ? policy : "";
 				result += `
 					<div class="description tabpad-${ i }">
 						<img src="${ e.logo }" class="companyimg">
-						<a class="policy ${ polices ? "" : "hidden" }" href="${ polices ? polices[i] : "" }">ПОЛИС</a>
+						<a class="policy ${ policy ? "" : "hidden" }" href="${ policy ? policy : "" }">ПОЛИС</a>
 						<a class="policy ${ e.instructionurl ? "" : "hidden" } ${entry.type === "SA" ? "" : "hidden"}" href="${ e.instructionurl }">ИНСТРУКЦИЯ</a>
-						<a class="policy ${entry.type === "SA" ? "" : "hidden"}" href="${ e.war }">ОФОРМЛЕНИЕ</a>
+						<a class="policy ${entry.type === "SA" ? "" : "hidden"}" href="${ e.war }" target="blank">ОФОРМЛЕНИЕ</a>
 					</div>	
 				`;
 			} );
